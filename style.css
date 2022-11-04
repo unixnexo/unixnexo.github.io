@@ -1,0 +1,74 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: red !important;
+    color: white !important;
+    background: url('img/0.jpg') no-repeat center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+}
+
+#overly-behind-content {
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.4);
+    color: white;
+    font-size: 180%;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif !important; 
+}
+
+/****************************** main text hover and other *************************************/
+h1 {
+    transition: all 0.15s ease-in-out;
+    font-family: 'Rubik Mono One', sans-serif !important;
+}
+
+h1 span {
+    font-family: 'Monoton', cursive !important;
+    transition: all 0.15s ease-in-out;
+}
+
+h1:hover span{
+    color: white !important;
+}
+
+h1:hover {
+    color: rebeccapurple !important;
+}
+
+/****************************** buttons main *************************************/
+div button {
+    font-family: 'Rubik Mono One', sans-serif !important;
+}
+
+/****************************** links "a" main *************************************/
+ul {
+    list-style-type: none;
+}
+
+ul li {
+    display: inline;
+}
+
+ul li a {
+    text-decoration: none;
+    color: white;
+    transition: all 0.15s ease-in-out;
+}
+
+ul li a:hover {
+    color: blueviolet;
+}
