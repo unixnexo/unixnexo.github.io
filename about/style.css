@@ -54,3 +54,8 @@ ul li a:hover {
     border: 2px solid rgb(30, 7, 51);
     box-shadow: 10px 5px 10px rgb(25, 2, 46);
 }
+
+#con-div p a {
+    color: rgb(66, 14, 116);
+    text-decoration: none;
+}
