@@ -48,6 +48,11 @@ ul li a:hover {
     color: blueviolet !important;
 }
 
+/****************************** navbar - dropdown menu - small screens *************************************/
+#dropdown-menu {
+    background-color: black;
+}
+
 /****************************** main text *************************************/
 #con-div {
     background-color: rgb(0, 0, 0);

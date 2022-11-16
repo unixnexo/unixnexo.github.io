@@ -47,6 +47,11 @@ ul li a:hover {
     color: blueviolet !important;
 }
 
+/****************************** navbar - dropdown menu - small screens *************************************/
+#dropdown-menu {
+    background-color: black;
+}
+
 /****************************** cards *************************************/
 .card-custom {
     background-color: black !important;
