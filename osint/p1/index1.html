@@ -1,0 +1,369 @@
+<!----------------------------------------- مرگ بر دیکتاتور -------------------------------------->
+<!------------------------------------ مرگ بر خامنه ای ------------------------------------------->
+<!--------------------------------------- زن زندگی آزادی ----------------------------------------->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="nexo blog, nexo, computer blog, computer stuff, unix nexo blog, unix blog, osint tools, OSINT"/>
+    <meta name="description" content="A personal blog about computer stuff | osint section"/>
+    <meta name="author" content="unix nexo"/>
+    <!--------------------------------------- title bar ----------------------------------------->
+    <link rel="shortcut icon" href="../../titlebar/0.jpg"/>
+    <title>nexo blog | some OSINT tools</title>
+    <!--------------------------------------- css3 ----------------------------------------->
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <!--------------------------------------- bootstrap5 ----------------------------------------->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!--------------------------------------- fonts ----------------------------------------->
+    <!-- Rubik Mono One -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <!-- Monoton -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <!-- style -->
+    <style>
+    /**** scrollbar ****/
+    /* Chrome, Safari */
+    ::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+    }
+    ::-webkit-scrollbar-track-piece  {
+    background-color: #000000;
+    }
+    ::-webkit-scrollbar-thumb:vertical {
+    height: 30px;
+    background-color: rgb(30, 7, 51);
+    }
+    </style>
+</head>
+<body>
+<!--------------------------------------- navbar ----------------------------------------->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-custom navbar-dark">
+            <div class="container">
+                <h1>
+                    <a class="navbar-brand" href="../../index.html">ne<span class="text-danger">x</span>o blog</a>
+                </h1>
+                <!-- on big screens -->
+                      <ul class="navbar-nav ms-auto d-none d-lg-inline-flex">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../network/index1.html">network</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../linux/index1.html">linux</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../security/index1.html">security</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../programing/index1.html">programing</a>
+                        </li>
+                        <li class="nav-item active-custom">
+                            <a class="nav-link" href="../../osint/index1.html">osint</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../windows/index1.html">windows</a>
+                        </li>
+                      </ul>
+
+                <!-- on small screens -->
+                  <li class="nav-item dropdown d-block d-lg-none">
+                    <a class="nav-link text-danger" href="#" aria-expanded="false"  id="dropdownMenuOffset" data-bs-toggle="dropdown"> ... </a>
+                    <ul class="dropdown-menu dropdown-menu-end" id="dropdown-menu">
+                      <li><a class="dropdown-item text-white" href="../../network/index1.html">network</a></li>
+                      <li><a class="dropdown-item text-white" href="../../linux/index1.html">linux</a></li>
+                      <li><a class="dropdown-item text-white" href="../../security/index1.html">security</a></li>
+                      <li><a class="dropdown-item text-white" href="../../programing/index1.html">programing</a></li>
+                      <li class="active-custom"><a class="dropdown-item text-white" href="#">osint</a></li>
+                      <li><a class="dropdown-item text-white" href="../windows/index1.html">windows</a></li>
+                    </ul>
+                  </li>
+
+            </div>
+        </nav>
+    </header>
+
+<!--------------------------------------- main ----------------------------------------->
+<main>
+
+    <!-- first container -->
+    <div class="container">
+        <div class="row">
+            <div id="purple-con" class="col-12">
+                <!-- second container -->
+                <div class="container">
+                    <div class="row">
+                        <div id="black-con" class="col-12 mx-auto m-3 p-5">
+                            <h1 class="col-12 text-center">| Some great OSINT tools</h1>
+                            <span class="text-white-50 text-center mx-auto d-block">For the whole list check the <a href="https://github.com/TCM-Course-Resources/Open-Source-Intellingence-Resources">source</a></span>
+                            <br/>
+                            <br/>
+
+                            <ul class="col-12">
+                                <li class="text-danger">sock puppet:</li>
+                                <p class="p">when u have a account and no body knows whose behind it.</p>
+                                <ol>                                 
+                                    <a target="_blank" href="https://web.archive.org/web/20210307173507/https://jakecreps.com/sock-puppets/">
+                                        <li>Intro to Creating an Effective Sock Puppet (wayback archive)</li>
+                                    </a>
+                                    <br/>
+                                    <a href="https://www.secjuice.com/the-art-of-the-sock-osint-humint/">
+                                        <li>The Art Of The Sock</li>
+                                    </a>
+                                    <br/>  
+                                    <a href="https://www.fakenamegenerator.com/">
+                                        <li>Fake Name Generator</li>
+                                    </a>
+                                    <br/>
+                                    <a href="https://www.thispersondoesnotexist.com/">
+                                        <li>This Person Does not Exist(AI generated image)</li>
+                                    </a>
+                                </ol>
+                            </ul>
+                            <br/>
+
+                            <ul class="col-12">
+                                <li class="text-danger">search engine:</li>
+                                <ol>
+                                    <li>for specific website → replace the text site:reddit.com</li>
+                                    <br/>
+                                    <li>the words need to be in order → “me and her” site:reddit.com</li>
+                                    <br/>
+                                    <li>something associated →  “me and her” AND/OR “poem book” site:reddit.com</li>
+                                    <br/>
+                                    <li>u may find passwords in sites → site:tesla.com password filetype:pds/xlsx/docx  or  “tesla” filetype:pdf pwd</li>
+                                    <br/>
+                                    <li>to find the sub domains we can say just dont look for www → site:tesla.com -www -forums</li>
+                                    <br/>
+                                    <li>if that person said something in a website → “adon nexo” intext/inurl/intitle:password site:twitter.com</li>
+                                </ol>
+                            </ul>
+                            <br/>
+
+                            <ul class="col-12">
+                                <li class="text-danger">reverse image search:</li>
+                                <ol>
+                                    <a target="_blank" href="https://images.google.com/">
+                                        <li>Google Image Search</li>
+                                    </a>
+                                    <br/>
+                                    <a target="_blank" href="https://yandex.com/">
+                                        <li>Yandex</li>
+                                    </a>
+                                    <br/>
+
+                                    <a target="_blank" href="https://tineye.com/">
+                                        <li>Tineye</li>
+                                    </a>
+                                </ol>
+                            </ul>
+                            <br/>
+
+                            <ul class="col-12">
+                                <li class="text-danger">viewing EXIF data::</li>
+                                <ol>
+                                    <a target="_blank" href="http://exif.regex.info/">
+                                        <li>Exif</li>
+                                    </a>
+                                </ol>
+                            </ul>
+                            <br/>
+
+                            <ul class="col-12">
+                                <li class="text-danger">Discovering email:</li>
+                                <ol>
+                                    <a target="_blank" href="https://hunter.io/">
+                                        <li>Hunter</li>
+                                    </a>
+                                    <br/>
+                                    <a target="_blank" href="https://phonebook.cz/">
+                                        <li>PhoneBook</li>
+                                    </a>
+                                    <br/>
+                                    <a target="_blank" href="https://www.voilanorbert.com/">
+                                        <li>Voilanorbert</li>
+                                    </a>
+                                    <br/>
+                                    <a target="_blank" href="https://tools.emailhippo.com/">
+                                        <li>Emailhippo</li>
+                                    </a>
+                                    <br/>
+                                    <a target="_blank" href="https://email-checker.net/">
+                                        <li>Email Checker</li>
+                                    </a>
+                                    <br/>
+                                </ol>
+                            </ul>
+                            <br/>
+
+                            <ul class="col-12">
+                                <li class="text-danger">Password (breached):</li>
+                                <ol>
+                                    <a target="_blank" href="https://hashes.com/">
+                                        <li>Hashes</li>
+                                    </a>
+                                    <br/>
+                                    <a target="_blank" href="https://leakcheck.io/">
+                                        <li>LeakChecke</li>
+                                    </a>
+                                    <br/>
+                                    <a target="_blank" href="https://haveibeenpwned.com/">
+                                        <li>HaveIBeenPwned</li>
+                                    </a>
+                                    <br/>
+                                    <a target="_blank" href="https://snusbase.com/">
+                                        <li>Snusbase</li>
+                                    </a>
+                                </ol>
+                            </ul>
+                            <br/>
+
+                            <ul class="col-12">
+                                <li class="text-danger">finding usernames:</li>
+                                <ol>
+                                    <a target="_blank" href="https://namechk.com/">
+                                        <li>Namechk</li>
+                                    </a>
+                                    <br/>
+                                    <a target="_blank" href="https://namecheckup.com/">
+                                        <li>NameCHeckUp</li>
+                                    </a>
+                                    <br/>
+                                    <a target="_blank" href="https://whatsmyname.app/">
+                                        <li>WhatsMyName</li>
+                                    </a>
+                                </ol>
+                            </ul>
+                            <br/>
+
+                            <ul class="col-12">
+                                <li class="text-danger">finding people:</li>
+                                <ol>
+                                    <a target="_blank" href="https://www.whitepages.com/">
+                                        <li>WhitePages -> must see #1</li>
+                                    </a>
+                                    <br/>
+                                    <a target="_blank" href="https://www.truepeoplesearch.com/">
+                                        <li>TruePoepleSearch -> must see </li>
+                                    </a>
+                                    <br/>
+                                    <a target="_blank" href="https://www.fastpeoplesearch.com/">
+                                        <li>FastPeopleSearch</li>
+                                    </a>
+                                </ol>
+                            </ul>
+                            <br/>
+
+                            <ul class="col-12">
+                                <li class="text-danger">phone numbers:</li>
+                                <ol>
+                                    <li>| always search the number on Google</li>
+                                    <br/>
+                                    <a target="_blank" href="https://www.truecaller.com/">
+                                        <li>TureCaller</li>
+                                    </a>
+                                    <br/>
+                                    <a target="_blank" href="https://calleridtest.com/">
+                                        <li>CallerIdTest -> do not sing in with ur real identity </li>
+                                    </a>
+                                </ol>
+                            </ul>
+                            <br/>
+
+                            <ul class="col-12">
+                                <li class="text-danger">twitter:</li>
+                                <ol>
+                                    <a target="_blank" href="https://socialbearing.com/">
+                                        <li>SocialBearing</li>
+                                    </a>
+                                    <br/>
+                                    <a target="_blank" href="https://www.twitonomy.com/">
+                                        <li>Twitonmy</li>
+                                    </a>
+                                    <br/>
+                                    <a target="_blank" href="http://sleepingtime.org/">
+                                        <li>SleepingTime</li>
+                                    </a>
+                                    <br/>
+                                    <a target="_blank" href="https://tweetdeck.com/">
+                                        <li>TweetDeck -> must see #1</li>
+                                    </a>
+                                </ol>
+                            </ul>
+                            <br/>
+
+                            <ul class="col-12">
+                                <li class="text-danger">facebook:</li>
+                                <ol>
+                                    <a target="_blank" href="https://sowdust.github.io/fb-search/">
+                                        <li>fb-Search</li>
+                                    </a>
+                                    <br/>
+                                    <a target="_blank" href="https://intelx.io/tools?tab=facebook">
+                                        <li>Intelx</li>
+                                    </a>
+                                </ol>
+                            </ul>
+                            <br/>
+
+                            <ul class="col-12">
+                                <li class="text-danger">instagram:</li>
+                                <ol>
+                                    <a target="_blank" href="https://codeofaninja.com/tools/find-instagram-user-id/">
+                                        <li>CodeofaNinja</li>
+                                    </a>
+                                    <br/>
+                                    <a target="_blank" href="https://www.instadp.com/">
+                                        <li>Instadp</li>
+                                    </a>
+                                </ol>
+                            </ul>
+                            <br/>
+
+                            <ul class="col-12">
+                                <li class="text-danger">website osint:</li>
+                                <ol>
+                                    <a target="_blank" href="https://builtwith.com/">
+                                        <li>BuiltWith</li>
+                                    </a>
+                                    <br/>
+                                    <a target="_blank" href="https://centralops.net/co/">
+                                        <li>Centralops</li>
+                                    </a>
+                                </ol>
+                            </ul>
+                            <br/>
+
+                            <ul class="col-12">
+                                <li class="text-danger">Source:
+                                    <a href="https://www.youtube.com/watch?v=yKIxW1RhqGg">TCM-Course-Resources | Open-Source-Intellingence-Resources</a>
+                                </li>
+                                <li class="text-danger">Wrote: <span>November 18, 2022 |  Aban 27, 1401</span></li>
+                                <li class="text-danger">Updated: <span></span></li>
+                                <li class="text-danger">Posted: <span>November 18, 2022 |  Aban 27, 1401</span></li>
+                            </ul>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</main>
+
+
+</body>
+</html>
