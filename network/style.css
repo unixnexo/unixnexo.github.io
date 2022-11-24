@@ -74,3 +74,21 @@ ul li a:hover {
 .card:hover {
     transform: scale(1.1);
 }
+
+
+/****************************** pagination *************************************/
+#pagination li a{
+    background-color: black;
+    color: white;
+    border: solid 1px blueviolet;
+}
+
+#pagination li a:hover {
+    color: white !important;
+}
+
+#pagination .active  a {
+    color: white;
+    background-color:blueviolet;
+    border: solid 1px blueviolet;
+}
