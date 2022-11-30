@@ -1,71 +1,149 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<!--  created with sitemap generator https://octopus.do  -->
 
-
-<url>
-  <loc>https://unixnexo.github.io/</loc>
-  <lastmod>2022-11-21T14:07:04+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://unixnexo.github.io/network/index1.html</loc>
-  <lastmod>2022-11-21T14:07:04+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://unixnexo.github.io/linux/index1.html</loc>
-  <lastmod>2022-11-21T14:07:04+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://unixnexo.github.io/security/index1.html</loc>
-  <lastmod>2022-11-21T14:07:04+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://unixnexo.github.io/programing/index1.html</loc>
-  <lastmod>2022-11-21T14:07:04+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://unixnexo.github.io/osint/index1.html</loc>
-  <lastmod>2022-11-21T14:07:04+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://unixnexo.github.io/windows/index1.html</loc>
-  <lastmod>2022-11-21T14:07:04+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://unixnexo.github.io/terms/index.html</loc>
-  <lastmod>2022-11-21T14:07:04+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://unixnexo.github.io/about/index.html</loc>
-  <lastmod>2022-11-21T14:07:04+00:00</lastmod>
-  <priority>0.90</priority>
-</url>
-<url>
-  <loc>https://unixnexo.github.io/contact/index.html</loc>
-  <lastmod>2022-11-21T14:07:04+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://unixnexo.github.io/links/index.html</loc>
-  <lastmod>2022-11-21T14:07:04+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://unixnexo.github.io/index.html</loc>
-  <lastmod>2022-11-21T14:07:04+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-
+    <url>
+        <loc>https://unixnexo.github.io</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/network/index1.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/network/p1/index1.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/network/p1/index2.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/network/p1/index3.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/network/p1/index4.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/network/p1/index5.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/network/p1/index6.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/network/index2.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/network/p2/index7.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/network/p2/index8.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/network/p2/index9.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/linux/index1.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/security/index1.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/programing/index1.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/osint/index1.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/osint/p1/index1.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/windows/index1.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/windows/p1/index1.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/terms/index.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/about/index.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/contact/index.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/links/index.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://unixnexo.github.io/index.html</loc>
+        <lastmod>2022-11-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
 </urlset>
