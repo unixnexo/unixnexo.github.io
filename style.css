@@ -73,3 +73,14 @@ ul li a {
 ul li a:hover {
     color: blueviolet;
 }
+
+
+/****************************** modal - search *************************************/
+#modal-body {
+    background-color: black;
+    color: white;
+}
+
+#search-icon {
+    width: 90px;
+}
