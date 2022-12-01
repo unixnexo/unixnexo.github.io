@@ -84,3 +84,20 @@ ul li a:hover {
 #search-icon {
     width: 90px;
 }
+
+/* the search result */
+a.addsRp--hit:hover{
+    background-color: black !important;
+    border: 1px solid blueviolet !important;
+    border-radius: 10px !important;
+}
+
+div.addsRp--category {
+    color: white !important;
+    background-color: #DC4C64 !important;
+}
+
+a.addsRp--hit {
+    background-color: #000000 !important;
+    border: 1px solid #000000 !important;
+}
