@@ -148,3 +148,7 @@ a.addsRp--hit {
     color: #DC4C64 !important;
     border: none !important;
 }
+
+.addsRp-searchfield-container-class .addsRp-searchfield input[type=search] {
+    min-width: 100px !important;   
+}
