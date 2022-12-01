@@ -88,7 +88,7 @@ ul li a:hover {
 /* the search result */
 a.addsRp--hit:hover{
     background-color: black !important;
-    border: 1px solid blueviolet !important;
+    border: 2px solid blueviolet !important;
     border-radius: 10px !important;
 }
 
@@ -99,7 +99,7 @@ div.addsRp--category {
 
 a.addsRp--hit {
     background-color: #000000 !important;
-    border: 1px solid #000000 !important;
+    border: 2px solid transparent !important;
 }
 
 .addsearch-searchresults-no-results {
@@ -115,6 +115,7 @@ a.addsRp--hit {
 .adds-components-srp-search-field button {
     background-color: #DC4C64 !important;
     border-radius: 5px !important;
+    border: 1px solid transparent !important;
 }
 
 .addsearch-sortby select {
