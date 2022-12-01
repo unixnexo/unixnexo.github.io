@@ -101,3 +101,46 @@ a.addsRp--hit {
     background-color: #000000 !important;
     border: 1px solid #000000 !important;
 }
+
+.addsearch-searchresults-no-results {
+    color: white !important;
+    margin: 30px !important;
+    text-align: center !important;
+}
+
+.addsearch-searchresults-no-results em {
+    color: blueviolet !important;
+}
+
+.adds-components-srp-search-field button {
+    background-color: #DC4C64 !important;
+    border-radius: 5px !important;
+}
+
+.addsearch-sortby select {
+    background-color: #DC4C64 !important;
+    border: 1px solid #DC4C64 !important;
+    border-radius: 3px !important;
+}
+
+.addsRp-searchfield input {
+    border-radius: 5px !important;
+    border: 1px solid #DC4C64 !important;
+    background-color: #000000 !important;
+    color: white !important;
+}
+
+.addsRp-searchfield input:focus {
+    outline: none !important;
+}
+
+.addsRp--footer {
+    border-top: 1px solid #DC4C64 !important;
+    margin: 30px !important;
+}
+
+.addsearch-pagination button {
+    background-color: #000000 !important;
+    color: #DC4C64 !important;
+    border: none !important;
+}
