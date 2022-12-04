@@ -127,6 +127,19 @@
                             <br/>
                             <br/>
 
+                            <h3 class="text-danger">Calculate classless subnet mask</h3>
+                            <p>In order to reduce the wastage of IP addresses a new concept of Classless Inter-Domain Routing(CIDR) is introduced.</p>
+                            <p>You can use this tool to calculate classless subnet mask → <a target="_blank" href="https://www.subnet-calculator.com/cidr.php">https://www.subnet-calculator.com/cidr.php</a></p>
+                            <br/>
+                            <img class="img-fluid mx-auto d-block" src="../img/26.png" alt="classless piture"/>
+                            <br/>
+                            <p>The process to determine the subnet mask for a CIDR address is straight forward. The number of bits in the network portion of the address are converted to 1s and right padded with 0s until there are 32 numbers. The sequence of numbers is then divided into 4 octets. From then, it is a matter of converting the 4 octets from binary to decimal.</p>
+                            <br/>
+                            <img class="img-fluid mx-auto d-block" src="../img/27.png" alt="classless piture"/>
+                            <br/>
+                            <br/>
+                            <br/>
+
                             <h3 class="text-danger">What are the advantages of classless addressing</h3>
                             <ol>
                                 <li class="text-success">More IP address allocations:</li>
@@ -135,6 +148,8 @@
                                 <p>During classless routing, it requires less bandwidth.</p>
                                 <li class="text-success">More balanced use of IP address ranges:</li>
                                 <p>Classless addressing decoupled the relationship between network size and IP address and allowed for balanced use across what used to be the Class A, B, and C ranges. Far less wasted addresses.</p>
+                                <li class="text-success">Variable Length Subnet Mask:</li>
+                                <p>Design strategy where all subnet masks can have varying sizes. This process of "subnetting subnets" enables network engineers to use multiple masks for different subnets of a single class A, B or C network.</p>
                             </ol>
                             <br/>
                             <br/>
@@ -151,9 +166,15 @@
                                     <span><a target="_blank" href="https://www.auvik.com/franklyit/blog/classful-classless-addressing/">auvik</a></span>
                                     <span>|</span>
                                     <span><a target="_blank" href="https://byjusexamprep.com/classless-addressing-i">byjusexamprep</a></span>
+                                    <span>|</span>
+                                    <span><a target="_blank" href="https://www.geeksforgeeks.org/classless-inter-domain-routing-cidr/?ref=rp">geeksforgeeks</a></span>
+                                    <span>|</span>
+                                    <span><a target="_blank" href="https://www.geeksforgeeks.org/ip-addressing-classless-addressing/">geeksforgeeks</a></span>
+                                    <span>|</span>
+                                    <span><a target="_blank" href="https://erikberg.com/notes/networks.html">erikberg</a></span>
                                 </li>
                                 <li class="text-danger">Wrote: <span>November 27, 2022 |  Azar 6, 1401</span>
-                                <li class="text-danger">Updated:
+                                <li class="text-danger">Updated: <span>December 4. 2022 | Azar 13, 1401</span>
                                 <li class="text-danger">Posted: <span>November 27, 2022 |  Azar 6, 1401</span>
                             </ul>
 
