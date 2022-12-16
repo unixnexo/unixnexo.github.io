@@ -58,6 +58,11 @@ ul li a:hover {
     transition: transform .6s;
 }
 
+.card a {
+    text-decoration: none;
+    color: white !important;
+}
+
 .card h5 {
     transition: all 0.15s ease-in-out;
 }
