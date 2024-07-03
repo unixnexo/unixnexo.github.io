@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-dark-mode-main">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin" />
+    <meta name='keywords' content="Using ngrok to let others access your localhost">
+    <meta name='description' content="You can easily use ngrok to host your localhost into their public host for free.">
+    <meta name='author' content="unixnexo, unix.nexo@icloud.com">
+    <meta name='owner' content="unixnexo">
+    <!-- tailwindCss -->
+    <link href="../output.min.css" rel="stylesheet"> 
+    <!-- favicon -->
+    <script async src="../favicon.js"></script>
+    <!-- components -->
+    <script defer src="../components/unixPhoto.js"></script>
+    <script defer src="../components/blogPost.js"></script>
+    <title>Using ngrok to let others access your localhost | By unixnexo</title>   
+</head>
+<body class="dark:bg-dark-mode-main bg-light-mode-main opacity-0 transition-opacity duration-1000">
+    
+    <blog-main>
+
+        <blog-article>
+
+            <blog-flex-div>
+                <blog-get-back-btn></blog-get-back-btn>
+                <blog-author></blog-author>
+            </blog-flex-div>
+
+            <blog-tags-div>
+                <time datetime="2024-07-03 15:20">3/7/2024</time>
+                <p>Short</p>
+                <p class="bg-rose-600">web stuff</p>
+            </blog-tags-div>
+
+            <h1>Using ngrok to let others access your localhost</h1>
+
+            <blog-summary-box>You can easily use ngrok to host your localhost into their public host for free.</blog-summary-box>
+
+            <p>The main reason I do this is for the times when I wanna show my website to someone that is not on the same network as me. The great news is that you can use ngrok for both your static or dynamic website.</p>
+
+            <h3>How to do it?</h3>
+            <ul>
+                <li>Download and install ngrok from their official website <a href="https://ngrok.com/download" target="_blank">https://ngrok.com/download</a>.</li>
+                <li>After installation, open up its command line.</li>
+                <li>You need to sing up in their website and get a token and give it to the CMD, it's easy you can follow the instructions in the website.</li>
+                <li>Have your website hosted on your localhost, you can use live server in VS code.</li>
+                <li>Then in the ngrok CMD, type the below command, make sure to use the right port.</li>
+<pre><code>ngrok http localhost:8000
+</code></pre>
+
+                <li>If successful, you get something like this -></li>
+                <img src="../../public/img/blog/ngrok.png" alt="ngrok" />
+                <li>The <blog-highlight-code>Forwarding</blog-highlight-code> is the url by which others can access whatever you have on your localhost.</li>
+            
+            </ul>
+
+            <blog-hr></blog-hr>
+            <blog-footer></blog-footer>
+
+        </blog-article>
+
+    </blog-main>
+    
+    <script defer src="../theme.js"></script>
+    <script src="../blogPages.js"></script>
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/github-dark.min.css"/>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script defer src="../highlightJsInitiate.js"></script>
+
+</body>
+</html>
