@@ -2114,6 +2114,11 @@ video {
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 
+.bg-rose-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(225 29 72 / var(--tw-bg-opacity));
+}
+
 .bg-sky-blue-main {
   --tw-bg-opacity: 1;
   background-color: rgb(67 129 193 / var(--tw-bg-opacity));
@@ -2125,11 +2130,6 @@ video {
 
 .bg-slate-700\/30 {
   background-color: rgb(51 65 85 / 0.3);
-}
-
-.bg-teal-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(45 212 191 / var(--tw-bg-opacity));
 }
 
 .bg-violet-500 {
@@ -2144,11 +2144,6 @@ video {
 
 .bg-yellow-400\/70 {
   background-color: rgb(250 204 21 / 0.7);
-}
-
-.bg-rose-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(225 29 72 / var(--tw-bg-opacity));
 }
 
 .fill-sky-blue-main {
