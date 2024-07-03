@@ -94,10 +94,10 @@
 
 
 /*** scrollbar ***/
-::-webkit-scrollbar {
-    /* need this one for the view transition api effect */
+/* ::-webkit-scrollbar {
+    need this one for the view transition api effect
     display: none; 
-}
+} */
 
 /* ::-webkit-scrollbar {
     width: 4px;
