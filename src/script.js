@@ -64,6 +64,7 @@ const phoneSearch = document.getElementById('phone_btn_search');
 const softwareSearch = document.getElementById('software_btn_search');
 const cssSearch = document.getElementById('css_btn_search');
 const worKaroundSearch = document.getElementById('workaround_btn_search');
+const webSearch = document.getElementById('web_btn_search');
 
 allSearch.addEventListener('click', () => {
     dataPostTags.forEach(tag => {
@@ -121,6 +122,19 @@ worKaroundSearch.addEventListener('click', () => {
         }
 
         if (tagValue === 'workaround') {
+            tag.classList.remove('hidden');
+        }
+    });
+});
+
+webSearch.addEventListener('click', () => {
+    dataPostTags.forEach(tag => {
+        const tagValue = tag.getAttribute('data-tag');
+        if (tagValue !== 'web') {
+            tag.classList.add('hidden');
+        }
+
+        if (tagValue === 'web') {
             tag.classList.remove('hidden');
         }
     });

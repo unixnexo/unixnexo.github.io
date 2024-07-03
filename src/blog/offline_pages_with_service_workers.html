@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-dark-mode-main">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin" />
+    <meta name='keywords' content="Offline pages with service workers">
+    <meta name='description' content="By using service workers API you can make your, static, website work offline. It's just a script to install and activate it.">
+    <meta name='author' content="unixnexo, unix.nexo@icloud.com">
+    <meta name='owner' content="unixnexo">
+    <!-- tailwindCss -->
+    <link href="../output.min.css" rel="stylesheet"> 
+    <!-- favicon -->
+    <script async src="../favicon.js"></script>
+    <!-- components -->
+    <script defer src="../components/unixPhoto.js"></script>
+    <script async src="../components/blogPost.js"></script>
+    <title>Offline pages with service workers | By unixnexo</title>   
+</head>
+<body class="dark:bg-dark-mode-main bg-light-mode-main opacity-0 transition-opacity duration-1000">
+    
+    <blog-main>
+
+        <blog-article>
+
+            <blog-flex-div>
+                <blog-get-back-btn></blog-get-back-btn>
+                <blog-author></blog-author>
+            </blog-flex-div>
+
+            <blog-tags-div>
+                <time datetime="2024-07-03 13:30">3/7/2024</time>
+                <p>Short</p>
+                <p class="bg-rose-600">web stuff</p>
+            </blog-tags-div>
+
+            <h1>Offline pages with service workers</h1>
+
+            <blog-summary-box>By using service workers API you can make your, static, website work offline. It's just a script to install and activate it.</blog-summary-box>
+
+            <blog-disclaimer-box>On ios the website should be through HTTPS in order for this to work.</blog-disclaimer-box>
+
+            <p>To demonstrate, I'm going to show you how to add some static pages to service workers.</p>
+
+            <h3>Install & activate service workers</h3>
+            <ul>
+                <li>Create a js file called <blog-highlight-code>sw.js</blog-highlight-code> at the root of your website, it's recommended to be there.</li>
+                <li>paste these codes inside  it -></li>
+<pre><code>const CACHE_NAME = 'STATIC_ASSETS_v1';
+
+const addResourcesToCache = async (resources) => {
+    const cache = await caches.open(CACHE_NAME);
+    await cache.addAll(resources);
+}
+
+const cacheMatch = async (request, preloadResponsePromise) => {
+    const isOnline = navigator.onLine;
+    // If the user is online, fetch the resource from the network
+    if (isOnline) {
+        try {
+            const networkResponse = await fetch(request);
+            // If the network response is successful, cache it and return
+            if (networkResponse && networkResponse.ok) {
+                const cache = await caches.open(CACHE_NAME);
+                await cache.put(request, networkResponse.clone());
+                return networkResponse;
+            }
+        } catch (err) {
+            return null;
+        }
+    }
+
+    // If the user is offline or network fetch fails, try to find a cached response
+    const cachedResponse = await caches.match(request);
+    if (cachedResponse) {
+        return cachedResponse;
+    }
+
+    if (isOnline) {
+        return null;
+    }
+
+    // If user is offline and no cached response is found, return a fallback response
+    return new Response("You are offline and there's no cached version of this resource.", { status: 503 });
+}
+
+self.addEventListener("install", (event) => {
+    self.skipWaiting()
+    event.waitUntil(addResourcesToCache([
+        './index.html',
+        './css/output.css',
+        './js/script.js',
+        './js/auto-animate-formkit.js',
+        './public/img/paper.webp',
+        './public/img/rock.webp',
+        './public/img/scissors.webp'
+    ]))
+})
+
+self.addEventListener("activate", event => {
+    event.waitUntil(clients.claim().then(() => console.log("SW has claimed all the clients")))
+    event.waitUntil(async () => {
+        if (self.registration.navigationPreload) {
+            await self.registration.navigationPreload.enable();
+        }
+    })
+})
+self.addEventListener("fetch", (event) => {
+    event.respondWith(cacheMatch(event.request, event.preloadResponse))
+})
+</code></pre>
+
+                <li>Although it's recommended to add this feature optionally by user, I'm going to install and activate it at the main page of my website, the first page the user reaches.</li>
+                <li>In my <blog-highlight-code>index.html</blog-highlight-code> I'm going to have a script tag with these codes -></li>
+<pre><code>const registerServiceWorker = async () => {
+if ("serviceWorker" in navigator) {
+        try {
+            const registration = await navigator.serviceWorker.register("./sw.js")
+            registration.addEventListener("updatefound", () => {
+                console.log("New worker being installed => ", registration.installing)
+            })
+
+            if (registration.installing) {
+                console.log("Service worker installed");
+                
+            } else if (registration.active) {
+                console.log("Service worker active!");
+            }
+
+        } catch (err) {
+            console.log("Registration failed")
+        }
+    } else {
+        console.log('service worker not supported');
+    }
+}
+registerServiceWorker()
+</code></pre>
+             
+            
+            </ul>
+            
+
+            <p>You can also check whether it's gone successful or not by opening <blog-highlight-code>dev tools > application tab > service workers</blog-highlight-code></p>
+            <img src="../../public/img/blog/service_worker.png" alt="dev tools" />
+
+            <p>I'm not going to explain all of these, but I recommend you reading these for further understanding:</p>
+            <a href="https://web.dev/learn/pwa/service-workers" target="_blank"> web.dev - service workers</a>
+            <br/>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank"> developer.mozilla.org - service worker API</a>
+
+
+            <blog-hr></blog-hr>
+            <blog-footer></blog-footer>
+
+        </blog-article>
+
+    </blog-main>
+
+    <!-- Locomotive scroll -->
+    <script defer src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" rel="stylesheet">
+    
+    <script defer src="../theme.js"></script>
+    <script src="../blogPages.js"></script>
+    <script defer src="../locomotive.js"></script>
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/github-dark.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script defer src="../highlightJsInitiate.js"></script>
+
+</body>
+</html>
