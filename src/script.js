@@ -65,6 +65,7 @@ const softwareSearch = document.getElementById('software_btn_search');
 const cssSearch = document.getElementById('css_btn_search');
 const worKaroundSearch = document.getElementById('workaround_btn_search');
 const webSearch = document.getElementById('web_btn_search');
+const performanceSearch = document.getElementById('performance_btn_search');
 
 allSearch.addEventListener('click', () => {
     dataPostTags.forEach(tag => {
@@ -135,6 +136,19 @@ webSearch.addEventListener('click', () => {
         }
 
         if (tagValue === 'web') {
+            tag.classList.remove('hidden');
+        }
+    });
+});
+
+performanceSearch.addEventListener('click', () => {
+    dataPostTags.forEach(tag => {
+        const tagValue = tag.getAttribute('data-tag');
+        if (tagValue !== 'performance') {
+            tag.classList.add('hidden');
+        }
+
+        if (tagValue === 'performance') {
             tag.classList.remove('hidden');
         }
     });

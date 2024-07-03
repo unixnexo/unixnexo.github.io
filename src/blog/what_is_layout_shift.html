@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-dark-mode-main">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin" />
+    <meta name='keywords' content="What is layout shift and how to prevent it">
+    <meta name='description' content="Unexpected layout shifts decreases your website's score in web vital metric, which is crucial for SEO. There're many things you can do to prevent it, one is using skeleton, the exact same size as the actual content that hasn't been loaded yet.">
+    <meta name='author' content="unixnexo, unix.nexo@icloud.com">
+    <meta name='owner' content="unixnexo">
+    <!-- tailwindCss -->
+    <link href="../output.min.css" rel="stylesheet"> 
+    <!-- favicon -->
+    <script async src="../favicon.js"></script>
+    <!-- components -->
+    <script defer src="../components/unixPhoto.js"></script>
+    <script defer src="../components/blogPost.js"></script>
+    <title>What is layout shift and how to prevent it | By unixnexo</title>   
+</head>
+<body class="dark:bg-dark-mode-main bg-light-mode-main opacity-0 transition-opacity duration-1000">
+    
+    <blog-main>
+
+        <blog-article>
+
+            <blog-flex-div>
+                <blog-get-back-btn></blog-get-back-btn>
+                <blog-author></blog-author>
+            </blog-flex-div>
+
+            <blog-tags-div>
+                <time datetime="2024-07-03 16:00">3/7/2024</time>
+                <p>Short</p>
+                <p class="bg-slate-500">performance stuff</p>
+            </blog-tags-div>
+
+            <h1>What is layout shift and how to prevent it</h1>
+
+            <blog-summary-box>Unexpected layout shifts decreases your website's score in web vital metric, which is crucial for SEO. There're many things you can do to prevent it, one is using skeleton, the exact same size as the actual content that hasn't been loaded yet.</blog-summary-box>
+
+            <p>If you don't get it, just look at the video below -></p>
+            <video autoplay="" controls="" loop="" muted="" poster="../../public/img/blog/layout-instability-poster.png" width="658" height="510">
+                <source src="../../public/img/blog/laoutshift.webm" type="video/webm; codecs=vp8">
+                <source src="../../public/img/blog/layout-instability2.mp4" type="video/mp4; codecs=h264">
+            </video>
+            <figcaption>
+                A sudden shift in layout makes the user confirm a large order they intended
+                to cancel. | From web.dev
+            </figcaption>
+
+            <p>Also, it just looks ugly, like below -></p>
+            <img src="../../public/img/blog/cls-layout-shift-example.png" alt="layout shift example | From parachutedesign.ca" title="From parachutedesign.ca" />
+            <p>See, when the image suddenly loads from nowhere, the content below goes some pixel down suddenly, which doesn't look good to the end user.</p>
+
+            <h3>How to prevent it?</h3>
+            <ul>
+                <li>By using skeleton.</li>
+                <li>By giving the wrapper element a fixed size, which is the exact same as the content inside.</li>
+                <li>By setting size (with & height) to imgs, Iframes, and videos.</li>
+            </ul>
+
+            <p>Also there're other way you can make it work, here's a great article -></p>
+            <a href="https://www.smashingmagazine.com/2021/06/how-to-fix-cumulative-layout-shift-issues/" target="_blank">https://www.smashingmagazine.com/2021/06/how-to-fix-cumulative-layout-shift-issues/</a>
+
+            <p>and the official docs -></p>
+            <a href="https://web.dev/articles/cls" target="_blank">https://web.dev/articles/cls</a>
+
+            <blog-hr></blog-hr>
+            <blog-footer></blog-footer>
+
+        </blog-article>
+
+    </blog-main>
+    
+    <script defer src="../theme.js"></script>
+    <script src="../blogPages.js"></script>
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/github-dark.min.css"/>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script defer src="../highlightJsInitiate.js"></script>
+
+</body>
+</html>
