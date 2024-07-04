@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-dark-mode-main">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin" />
+    <meta name='keywords' content="View transition API with multiple images">
+    <meta name='description' content="By using window.addEventListener('pageswap') and window.addEventListener('pagereveal') you can add and remove viewTransitionName on an element at the last moment, so you don't have to hardcode viewTransitionNameon each single image in your page.">
+    <meta name='author' content="unixnexo, unix.nexo@icloud.com">
+    <meta name='owner' content="unixnexo">
+    <!-- tailwindCss -->
+    <link href="../output.min.css" rel="stylesheet"> 
+    <!-- favicon -->
+    <script async src="../favicon.js"></script>
+    <!-- components -->
+    <script defer src="../components/unixPhoto.js"></script>
+    <script defer src="../components/blogPost.js"></script>
+    <title>View transition API with multiple images | By unixnexo</title>   
+</head>
+<body class="dark:bg-dark-mode-main bg-light-mode-main opacity-0 transition-opacity duration-1000">
+    
+    <blog-main>
+
+        <blog-article>
+
+            <blog-flex-div>
+                <blog-get-back-btn></blog-get-back-btn>
+                <blog-author></blog-author>
+            </blog-flex-div>
+
+            <blog-tags-div>
+                <time datetime="2024-07-04 16:20">2024/7/4</time>
+                <p>Short</p>
+                <p class="bg-rose-600">web stuff</p>
+            </blog-tags-div>
+
+            <h1>View transition API with multiple images</h1>
+
+            <blog-summary-box>By using <i>window.addEventListener('pageswap')</i> and <i>window.addEventListener('pagereveal')</i> you can add and remove <i>viewTransitionName</i> on an element at the last moment, so you don't have to hardcode <i>viewTransitionName</i> on each single image in your page.</blog-summary-box>
+
+            <p>I'm not here to teach you all about view transition API, but to give a way to achieve something; For instance you have a dynamic shop, and you want to transition the image on the main page to the detail page, as you may know you can't give the same viewTransitionName to two elements in the same page, so what if you have 100 products?</p>
+            <p>Fortunately you can use a technic in which you add the necessary <i>viewTransitionName</i> to the image that that user clicked on, and then remove if after transition finished, so this way never two elements have the same name at the same time.</p>
+
+<pre><code>let eventTarget;
+if (document.startViewTransition) {
+    document.addEventListener('click', (event) => {
+        if (event.target.tagName.toLowerCase() === 'a') {
+            eventTarget = event.target;
+        }
+    });
+
+    window.addEventListener('pageswap', (event) => {
+        eventTarget.style.viewTransitionName = 'image-zoom';
+        
+    });
+
+    window.addEventListener('pagereveal', async (event) => {
+        await event.viewTransition.finished;
+        eventTarget.style.viewTransitionName = 'none';
+    });
+}
+</code></pre>
+
+            <p>Note that all pages have to have this enabled in css -></p>
+<pre><code>@view-transition {
+    navigation: auto;
+}
+</code></pre>
+
+            <p>So what I'm doing here is that first I wanna know what element user has clicked, if it's <i>a tag</i>, meaning it's an image that goes into its detail page in which there's the same exact image, so I wanna transition it. Then it's simple, add the viewTransition and remove it after the transition finished.</p>
+            <p>Note that you should give the same <i>viewTransition</i> to the corresponding image on the other page as well for this to work, you can hard code that probably, since it's going to be one image in each detail page.</p>
+
+            <blog-hr></blog-hr>
+            <blog-footer></blog-footer>
+
+        </blog-article>
+
+    </blog-main>
+    
+    <script defer src="../theme.js"></script>
+    <script src="../blogPages.js"></script>
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/github-dark.min.css"/>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script defer src="../highlightJsInitiate.js"></script>
+
+</body>
+</html>
