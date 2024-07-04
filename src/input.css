@@ -99,7 +99,7 @@
     display: none; 
 } */
 
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
     width: 4px;
 }
 ::-webkit-scrollbar-thumb {
@@ -107,7 +107,7 @@
 }
 ::-webkit-scrollbar-track {
     background-color: transparent;
-} */
+}
 
 /* for FireFox only */
 /* @supports (-moz-appearance:none) {
@@ -115,7 +115,7 @@
         scrollbar-width: thin;
         scrollbar-color: theme('colors.sky-blue-main') transparent;
     }
-} */
+}
 
 
 /*** selection ***/
