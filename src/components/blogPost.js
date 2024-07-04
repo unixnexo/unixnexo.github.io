@@ -73,7 +73,7 @@ class blogTagsDiv extends HTMLElement {
         this.innerHTML = `
         <div class="_div-tags">
             ${this.innerHTML}
-            <p class=" cursor-pointer select-none touch-none" onclick="themeSwitcher();">dark mode: <span id="theme-switcher-text">on</span></p>
+            <p class="cursor-pointer select-none touch-none" onclick="themeSwitcher();">dark mode: <span id="theme-switcher-text">on</span></p>
         </div>
         `
     }

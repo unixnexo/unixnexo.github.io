@@ -32,7 +32,7 @@
     }
 
     ._div-tags {
-        @apply flex items-center mt-3 space-x-2 text-base font-Pally-Regular dark:[&>*]:bg-white/90 dark:[&>*]:text-black [&>*]:bg-black/90 [&>*]:text-white [&>*]:py-1 [&>*]:px-2 [&>*]:rounded-md;
+        @apply flex flex-wrap items-center mb-3 mt-3 md:space-x-2 text-base font-Pally-Regular dark:[&>*]:bg-white/90 dark:[&>*]:text-black [&>*]:bg-black/90 [&>*]:text-white [&>*]:py-1 [&>*]:px-2 [&>*]:rounded-md *:m-1;
     }
 
     /** search tags btns **/
