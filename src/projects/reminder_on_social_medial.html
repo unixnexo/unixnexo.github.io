@@ -51,7 +51,7 @@
 
         <!-- red note -->
         <div class="bg-red-400 border-l-8 border-red-600 text-black 0 p-4 mb-10" role="alert">
-            <p class="font-bold">Notes</p>
+            <p class="font-bold">Important</p>
             <p>The project is hosted on a free host, Render.com, which does this things for free accounts: <i>"Free instance will spin down with inactivity, which can delay requests by 50 seconds or more."</i>, so if you experienced slow loading, that's the reason.
                 Another <b>important</b> thing to bare in mind is that, since the host goes into sleep after inactivity, after 30 min usually, you may not receive some reminders that their due date/time is more that 30 min, unless you or someone else has visited the website during those times so the server won't sleep.
             </p>
@@ -123,6 +123,11 @@
                 </svg>
             </div>
 
+        </div>
+
+        <div class="my-10">
+            <h4 class="text-2xl">Notes</h4>
+            <p>So if I wanna create another, let's call it, "scheduler website", I would definitely go with django threads like I did here, I think using <i>celery</i> is an overkill in my case. The only problem with django threads is that if the server goes down, all the tracking will get lost and the user doesn't get the thing they wanted on that specific time. Also found something great called <a href="https://cron-job.org/" target="_blank">https://cron-job.org/</a>, but it was too late. So maybe next time.</p>
         </div>
 
     </main>
