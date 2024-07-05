@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-dark-mode-main">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin" />
+    <meta name='keywords' content="Translate 3D text effect">
+    <meta name='description' content="Create an overlay that scales up with transition when btn is clicked, also overflow-hidden the parent.">
+    <meta name='author' content="unixnexo, unix.nexo@icloud.com">
+    <meta name='owner' content="unixnexo">
+    <!-- tailwindCss -->
+    <link href="../output.min.css" rel="stylesheet"> 
+    <!-- favicon -->
+    <script async src="../favicon.js"></script>
+    <!-- components -->
+    <script defer src="../components/unixPhoto.js"></script>
+    <script defer src="../components/blogPost.js"></script>
+    <title>Translate 3D text effect | By unixnexo</title>   
+</head>
+<body class="dark:bg-dark-mode-main bg-light-mode-main opacity-0 transition-opacity duration-1000">
+    
+    <blog-main>
+
+        <blog-article>
+
+            <blog-flex-div>
+                <blog-get-back-btn></blog-get-back-btn>
+                <blog-author></blog-author>
+            </blog-flex-div>
+
+            <blog-tags-div>
+                <time datetime="2024-07-05 15:05">7/5/2024</time>
+                <p>Short</p>
+                <p class="bg-blue-500">css stuff</p>
+            </blog-tags-div>
+
+            <h1>Translate 3D text effect</h1>
+
+            <blog-summary-box>Wrap the text into a blocked, overflow-hidden container, toggle <blog-highlight-code>transform: translate3d(0, 100%, 0);</blog-highlight-code> on the text.</blog-summary-box>
+
+            <h2>Result</h2>
+            <img src="../../public/img/blog/translate3dtext.gif" alt="result" />
+
+            <h3>How to do it?</h3>
+<pre><code>&lt;div&gt;
+    &lt;h1&gt;Hi!&lt;/h1&gt;
+&lt;/div&gt;
+</code></pre>
+
+<pre><code>div {
+    overflow: hidden;
+}
+  
+h1 {
+    font-size: 50px;
+    display: block;
+    transform: translate3d(0, 100%, 0);
+    transition: transform 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0ms;
+}
+  
+h1.active {
+    transform: translate3d(0, 0, 0);
+}
+</code></pre>
+
+<pre><code><button>let el = document.querySelector('h1');
+let className = "active";
+
+window.addEventListener('click', () => {
+    if (el.className) {
+        el.classList.remove(className);
+    } else {
+        el.classList.add(className);
+    }
+});
+</code></pre>
+
+
+            <blog-hr></blog-hr>
+            <blog-footer></blog-footer>
+
+        </blog-article>
+
+    </blog-main>
+    
+    <script defer src="../theme.js"></script>
+    <script src="../blogPages.js"></script>
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/github-dark.min.css"/>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script defer src="../highlightJsInitiate.js"></script>
+
+</body>
+</html>
