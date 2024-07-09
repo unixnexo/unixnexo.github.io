@@ -85,6 +85,10 @@
         opacity: 0;
     }
 
+    .active-btn {
+        @apply dark:bg-white dark:text-black bg-black text-white;
+    }
+
 }
 
 
@@ -352,3 +356,24 @@
 
 
 /* test//////// */
+table.no-outer-borders td, table th {
+    border: 1px solid currentColor;
+}
+
+table.no-outer-borders tr:first-child td {
+    border-top: 0;
+}
+
+table.no-outer-borders tr:last-child td {
+    border-bottom: 0;
+}
+
+table.no-outer-borders tr td:first-child,
+table.no-outer-borders tr th:first-child {
+    border-left: 0;
+}
+
+table.no-outer-borders tr td:last-child,
+table.no-outer-borders tr th:last-child {
+    border-right: 0;
+}

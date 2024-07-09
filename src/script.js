@@ -363,11 +363,69 @@ if (isTouchDevice) {
 }
 
 
+/**
+ * designs - table, fast view window
+ */
+function rearrangeTable() {
+    const table = document.getElementById('responsive-table');
+    const tds = Array.from(table.querySelectorAll('td[data-content]'));
+    const tbody = table.querySelector('tbody');
+    tbody.innerHTML = '';
+  
+    const width = window.innerWidth;
+    let columns;
+  
+    if (width >= 1280) {
+      columns = 4; // xl and above
+    } else if (width >= 1024) {
+      columns = 3; // lg
+    } else {
+      columns = 2; // below lg
+    }
+  
+    for (let i = 0; i < tds.length; i += columns) {
+      const row = document.createElement('tr');
+      for (let j = 0; j < columns; j++) {
+        if (tds[i + j]) {
+          row.appendChild(tds[i + j]);
+        }
+      }
+      tbody.appendChild(row);
+    }
+  }
+  
+rearrangeTable();
+window.addEventListener('resize', rearrangeTable);
+  
+
+// fast view windows
+const designItems = document.querySelectorAll('td[data-img-src]');
+const fastViewWindow = document.getElementById('design-fast-view-window');
+const fastViewTitle = document.getElementById('design-fast-view-title');
+const moreAboutText = document.getElementById('design-more-text');
+designItems.forEach(el => {
+  el.addEventListener('mouseover', () => {
+    // deactivate all elements
+    designItems.forEach(item => item.classList.remove('active-btn'));
+
+    // Visualize related texts
+    moreAboutText.classList.remove('hidden');
+    moreAboutText.classList.add('flex');
+    fastViewTitle.style.display = 'none';
+    fastViewWindow.style.display = 'block';
+
+    // Update URL and src
+    fastViewWindow.src = el.getAttribute('data-img-src');
+    moreAboutText.setAttribute('href', `${el.getAttribute('data-url')}`);
+
+    // Activate the hovered element
+    el.classList.add('active-btn');
+  });
+});
 
 
-////////////////////////////test
 
 
-
+////////////////////test
 
 
