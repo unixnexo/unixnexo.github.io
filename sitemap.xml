@@ -9,27 +9,82 @@
 
 <url>
   <loc>https://unixnexo.github.io/</loc>
-  <lastmod>2024-05-10T13:05:59+00:00</lastmod>
+  <lastmod>2024-07-10T09:44:03+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
+  <loc>https://unixnexo.github.io/src/projects/rock-paper-scissors.html</loc>
+  <lastmod>2024-07-10T09:44:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://unixnexo.github.io/src/projects/reminder_on_social_medial.html</loc>
+  <lastmod>2024-07-10T09:44:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://unixnexo.github.io/src/blog/translate3d_text_effect.html</loc>
+  <lastmod>2024-07-10T09:44:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://unixnexo.github.io/src/blog/ripple_effect_on_button.html</loc>
+  <lastmod>2024-07-10T09:44:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://unixnexo.github.io/src/blog/view_transition_api_with_multiple_images.html</loc>
+  <lastmod>2024-07-10T09:44:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://unixnexo.github.io/src/blog/what_is_layout_shift.html</loc>
+  <lastmod>2024-07-10T09:44:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://unixnexo.github.io/src/blog/using_ngrok_to_let_others_access_your_localhost.html</loc>
+  <lastmod>2024-07-10T09:44:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://unixnexo.github.io/src/blog/offline_pages_with_service_workers.html</loc>
+  <lastmod>2024-07-10T09:44:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://unixnexo.github.io/src/blog/Using_Telegram_API_even_if_the_host_doesn't_let_you_to.html</loc>
+  <lastmod>2024-07-10T09:44:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://unixnexo.github.io/src/blog/flashlight_in_a_dark_page_css_effect.html</loc>
-  <lastmod>2024-05-10T13:05:59+00:00</lastmod>
+  <lastmod>2024-07-10T09:44:03+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://unixnexo.github.io/src/blog/nvidia_geforce_install_driver_error.html</loc>
-  <lastmod>2024-05-10T13:05:59+00:00</lastmod>
+  <lastmod>2024-07-10T09:44:03+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://unixnexo.github.io/src/blog/Upgrade_your_outdated_android_phone_to_a_higher_android_version.html</loc>
-  <lastmod>2024-05-10T13:05:59+00:00</lastmod>
+  <lastmod>2024-07-10T09:44:03+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://unixnexo.github.io/index.html</loc>
+  <lastmod>2024-07-10T09:44:03+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://unixnexo.github.io/rock-paper-scissors/</loc>
+  <lastmod>2024-06-18T13:57:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
   <loc>https://unixnexo.github.io/404.html</loc>
-  <lastmod>2024-05-10T13:05:59+00:00</lastmod>
+  <lastmod>2024-07-10T09:44:03+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 
