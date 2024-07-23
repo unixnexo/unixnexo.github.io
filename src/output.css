@@ -3301,6 +3301,10 @@ table.no-outer-borders tr th:last-child {
     left: 2.5rem;
   }
 
+  .sm\:inline {
+    display: inline;
+  }
+
   .sm\:size-\[80\%\] {
     width: 80%;
     height: 80%;
