@@ -28,6 +28,9 @@ module.exports = {
         'Pally-Regular': ['Pally-Regular'],
         'Pally-Medium': ['Pally-Medium'],
       },
+      listStyleImage: {
+        checkmark: 'url("/public/icon/checkmark.svg")',
+      },
     },
   },
   plugins: [
