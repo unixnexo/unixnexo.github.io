@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-dark-mode-main">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin" />
+    <meta name='keywords' content="Element following mouse move effect.">
+    <meta name='description' content="Using css var and 'rotate' properties, you can corelate the mouse move to the element.">
+    <meta name='author' content="unixnexo, unix.nexo@icloud.com">
+    <meta name='owner' content="unixnexo">
+    <!-- tailwindCss -->
+    <link href="../output.min.css" rel="stylesheet"> 
+    <!-- favicon -->
+    <script async src="../favicon.js"></script>
+    <title>Element following mouse move effect | By unixnexo</title>   
+</head>
+<body class="dark:bg-dark-mode-main bg-light-mode-main opacity-0 transition-opacity duration-1000">
+    
+    <blog-main>
+
+        <blog-article>
+
+            <blog-flex-div>
+                <blog-get-back-btn></blog-get-back-btn>
+                <blog-author></blog-author>
+            </blog-flex-div>
+
+            <blog-tags-div>
+                <time datetime="2024-09-05 12:45">2024/9/5</time>
+                <span>long</span>
+                <span class="bg-blue-500">css stuff</span>
+            </blog-tags-div>
+
+            <h1>Element following mouse move effect</h1>
+
+            <blog-summary-box>Using css var and "rotate" properties, you can corelate the mouse move to the element.</blog-summary-box>
+
+            <h3>What the hell is this effect!?</h3>
+            <p>I'm talking about this kind of effect 👇, I just didn't know what's it called ¯\_(ツ)_/¯, so I made up a name.</p>
+            <figure>
+                <img src="../../public/img/blog/elementfollowingmousemove.gif" alt="demo of the effect" />
+                <figcaption style="margin: 0;">From <a href="https://unixnexo.github.io/Poppy-Kristin-portfolio/#hero" target="_blank">https://unixnexo.github.io/Poppy-Kristin-portfolio/#hero</a></figcaption>
+            </figure>
+
+            <h3>How to do it?</h3>
+            <p>Let's imagine that the element you wanna do this effect to has a id of "card". Btw I'm not going to dive into styling, however you give the element enough depth to see the effect, like the one you saw right up there.</p>
+<pre><code>#card {
+    transform: rotateX(var(--rotateX)) rotateY(var(--rotateY));
+    -webkit-transform: rotateX(var(--rotateX)) rotateY(var(--rotateY));
+    perspective: 5000px;
+    -webkit-perspective: 5000px;
+    position: relative;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+</code></pre>
+
+    <p>and the code below is the magic</p>
+
+<pre><code>const card = document.querySelector('#card');
+
+document.addEventListener('mousemove', (e) => {
+    rotateElement(e, card);
+});
+
+document.addEventListener('mouseleave', () => {
+    card.style.transition = 'all .5s ease-in-out';
+    card.style.setProperty('--rotateX', '0deg');
+    card.style.setProperty('--rotateY', '0deg');
+    setTimeout(() => {
+        card.style.transition = 'none';
+    }, 500);
+});
+
+function rotateElement (event, element) {
+    const x = event.clientX;
+    const y = event.clientY;
+
+    // middle of apge
+    const middleX = window.innerWidth / 2;
+    const middleY = window.innerHeight / 2;
+
+    // offset from middle
+    const offsetX = ((x - middleX) / middleX) * 20;
+    const offsetY = ((y - middleY) / middleY) * 20;
+
+    element.style.setProperty('--rotateX', -1 * offsetY + 'deg');
+    element.style.setProperty('--rotateY', offsetX + 'deg');
+}
+</code></pre>
+
+            <p>The above does the job but the element follows the mouse all around the page, what if you only want it to follow the mouse when it enters the element itself? Follow along.</p>
+
+            <h2>Now Let's do another one!</h2>
+<pre><code>const card = document.querySelector('#card');
+let hasGoneOVerIt = false;
+
+card.addEventListener('mouseenter', () => {
+  setTimeout(() => {
+    card.style.transition = 'none';
+  }, 300);
+});
+
+card.addEventListener('mousemove', (e) => {
+  rotateElement(e, card);
+});
+
+card.addEventListener('mouseleave', (e) => {
+  card.style.transition = 'transform 0.2s ease-out';
+  card.style.setProperty('--rotateX', '0deg');
+  card.style.setProperty('--rotateY', '0deg');
+});
+
+function rotateElement(event, element) {
+  const rect = element.getBoundingClientRect();
+
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+
+  // middle of card
+  const middleX = rect.width / 2;
+  const middleY = rect.height / 2;
+
+  // offset from middle
+  const offsetX = ((x - middleX) / middleX) * 20;
+  const offsetY = ((y - middleY) / middleY) * 20;
+
+  element.style.setProperty('--rotateX', -1 * offsetY + 'deg');
+  element.style.setProperty('--rotateY', offsetX + 'deg');
+}
+</code></pre>
+
+<p>The above makes the element to follow the mouse movement only when the mouse is on the element.</p>
+<p>Highly recommend you to watch this <a href="https://youtu.be/Z-3tPXf9a7M?si=AFAP2DCIXOdWRR94" target="_blank">https://youtu.be/Z-3tPXf9a7M?si=AFAP2DCIXOdWRR94</a>, if you wanna get into it much deeper and also find a css-only version of it.</p>
+
+            <blog-hr></blog-hr>
+            <blog-footer></blog-footer>
+
+        </blog-article>
+
+    </blog-main>
+
+
+    <!-- components -->
+    <script defer src="../components/unixPhoto.js"></script>
+
+    <script src="../components/blogPost.js"></script>
+    <script defer src="../theme.js"></script>
+    <script src="../blogPages.js"></script>
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/github-dark.min.css"/>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script defer src="../highlightJsInitiate.js"></script>
+
+</body>
+</html>
