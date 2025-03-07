@@ -1,79 +1,78 @@
-@import url('https://fonts.googleapis.com/css2?family=Preahvihear&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Preahvihear&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 .preahvihear-regular {
-    font-family: "Preahvihear", serif;
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Preahvihear", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 * {
-    --xl-width: 40vw;
-    --lg-width: 50vw;
-    --md-width: 70vw;
-    --sm-width: 90vw;
+  --xl-width: 40vw;
+  --lg-width: 50vw;
+  --md-width: 70vw;
+  --sm-width: 90vw;
 
-    font-family: "Preahvihear", serif;
+  font-family: "Preahvihear", serif;
 }
 
 ::selection {
-    background-color: rgba(0, 0, 0, 0.597);
-    color: white;
+  background-color: rgba(0, 0, 0, 0.597);
+  color: white;
 }
 
-html, body {
-    scroll-behavior: smooth;
-    @apply bg-primary-light text-black dark:bg-primary-dark dark:text-white transition-colors duration-500 will-change-auto min-h-screen;
+html,
+body {
+  scroll-behavior: smooth;
+  @apply bg-primary-light text-black dark:bg-primary-dark dark:text-white transition-colors duration-500 will-change-auto min-h-screen;
 }
 
 @supports selector(::-webkit-scrollbar) {
-    .custom-scrollbar {
-      scrollbar-gutter: stable;
-    }    
-    ::-webkit-scrollbar {
-      background: inherit;
-      width: 15px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: gray;
-      border-radius: 100px;
-      border: 5px solid rgba(0, 0, 0, 0);
-      background-clip: padding-box;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: rgb(149, 145, 145);
-      border: 5px solid rgba(0, 0, 0, 0);
-      background-clip: padding-box;
-    }
-    ::-webkit-scrollbar-thumb:active {
-      background: rgb(164, 163, 163);
-      border: 5px solid rgba(0, 0, 0, 0);
-      background-clip: padding-box;
-    }
+  .custom-scrollbar {
+    scrollbar-gutter: stable;
   }
-
+  ::-webkit-scrollbar {
+    background: inherit;
+    width: 15px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 100px;
+    border: 5px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(149, 145, 145);
+    border: 5px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:active {
+    background: rgb(164, 163, 163);
+    border: 5px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+  }
+}
 
 /* NavBar */
 @media screen and (min-width: 880px) {
-    .after-scroll-md {
-        @apply sticky top-1/2 -translate-y-1/2 -rotate-90 -translate-x-[110%] w-fit;
-    }
+  .after-scroll-md {
+    @apply sticky top-1/2 -translate-y-1/2 -rotate-90 -translate-x-[110%] w-fit;
+  }
 
-    .on-mouse {
-      @apply dark:hover:bg-white/20 dark:active:bg-white/40 hover:bg-black/20 active:bg-black/40 px-1.5 py-1 rounded-md transition-colors duration-150 cursor-pointer touch-none;
-    }
+  .on-mouse {
+    @apply dark:hover:bg-white/20 dark:active:bg-white/40 hover:bg-black/20 active:bg-black/40 px-1.5 py-1 rounded-md transition-colors duration-150 cursor-pointer touch-none;
+  }
 }
 
 @media screen and (max-width: 879px) {
-    .after-scroll-sm {
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        @apply sticky top-2 z-50 rounded-md p-3 bg-white/30;
-    }
+  .after-scroll-sm {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    @apply sticky top-2 z-50 rounded-md p-3 bg-white/30;
+  }
 }
-
 
 .fade-in {
   opacity: 1 !important;
