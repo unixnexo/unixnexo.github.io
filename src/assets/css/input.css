@@ -73,14 +73,3 @@ body {
     @apply sticky top-2 z-50 rounded-md p-3 bg-white/30;
   }
 }
-
-.fade-in {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
-
-.animate-div {
-  opacity: 0;
-  transform: translateY(100px);
-  transition: opacity 0.5s linear, transform 0.4s linear;
-}

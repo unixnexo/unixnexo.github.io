@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "tailwind": "npx tailwindcss -i ./src/assets/css/input.css -o ./src/assets/css/output.css --watch",
     "minify": "npx tailwindcss -o ./src/assets/css/output.css --minify",
-    "deploy": "npm run minify && npm run build && gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.7",

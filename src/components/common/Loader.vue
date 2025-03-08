@@ -18,8 +18,8 @@
 <style scoped>
     div.spinner {
         position: fixed;
-        width: 54px;
-        height: 54px;
+        width: 38px;
+        height: 38px;
         display: inline-block;
         top: 50%;
         left: 50%;

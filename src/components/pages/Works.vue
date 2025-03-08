@@ -4,7 +4,7 @@ import { useIntersectionObserver } from '../composable/useIntersectionObserver';
 import WorkItems from '../common/WorkItems.vue';
 import MainTitle from '../common/MainTitle.vue';
 
-const targetRef = ref(null);
+// const targetRef = ref(null);
 
 const works = ref([
     { id: 1, title: 'Rock Paper Scissors', url: 'https://unixnexo.github.io/rock-paper-scissors/', repoUrl: 'https://github.com/unixnexo/rock-paper-scissors' },
@@ -14,12 +14,12 @@ const works = ref([
     { id: 5, title: 'B Burgers menu design', url: 'https://unixnexo.github.io/B-Burgers/', repoUrl: 'https://github.com/unixnexo/B-Burgers/' },
 ]);
 
-const { isVisible } = useIntersectionObserver(targetRef);   
+// const { isVisible } = useIntersectionObserver(targetRef);   
 
 </script>
 
 <template>
-    <div ref="targetRef" id="works" :class="{ 'fade-in': isVisible }" class="animate-div">
+    <div id="works">
         <MainTitle title="Things I've worked on" />
     
         <div class="mb-[74px] space-y-3">
