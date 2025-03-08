@@ -7,11 +7,12 @@ const h1_2 = "web developer";
 const props = defineProps({
   imageUrl: {
     type: String,
-    required: true
+    required: true,
   },
   isLoaded: {
     type: Boolean,
-    required: false
+    required: true,
+    default: false
   }
 });
 

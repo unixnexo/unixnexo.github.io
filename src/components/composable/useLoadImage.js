@@ -17,17 +17,17 @@ export function useLoadImage() {
     console.error('Image failed to load:', err)
     isLoading.value = false
   }
-  img.src = meImage
+  const meImg = img.src = `${meImage}?t=${Date.now()}`; // so the image is not cached
   
-  if (img.complete) {
-    console.log('Image was cached')
-    isLoaded.value = true
-    isLoading.value = false
-  }
+  // if (img.complete) {
+  //   console.log('Image was cached')
+  //   isLoaded.value = true
+  //   isLoading.value = false
+  // }
 
   return {
     isLoaded,
     isLoading,
-    imageUrl: meImage
+    imageUrl: meImg
   }
 }
