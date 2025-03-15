@@ -1,27 +1,41 @@
 <script setup>
-import { ref, watch } from 'vue';
+import imagesLoaded from 'imagesloaded';
+import axios from 'axios';
+import { onMounted, ref, watch, nextTick } from 'vue';
 
-const h1_1 = "I'm Ali, a full stack";
-const h1_2 = "web developer";
+const urlFromEnv = import.meta.env.VITE_API_BASE_URL;
 
-const props = defineProps({
-  imageUrl: {
-    type: String,
-    required: true,
-  },
-  isLoaded: {
-    type: Boolean,
-    required: true,
-    default: false
+const props = defineProps({ isLoaded: Boolean });
+const emit = defineEmits(['update:isLoaded']);
+
+const data = ref(null);
+const error = ref(null);
+const showText = ref(false);
+
+const getData = async () => {
+  try {
+    const response = await axios.get(`${urlFromEnv}/api/GeneralInfo/`);
+    data.value = response.data;
+  } catch (err) {
+    console.error("Error fetching data:", err);
+    error.value = err.message;
   }
-});
 
-const showText = ref(false)
+  // to check if the img is fully loaded
+  await nextTick();
+  
+  imagesLoaded(document.querySelector('#inner-wrapper'), { background: true }, () => {
+    console.log('Fully loaded');
+    emit('update:isLoaded', true);
+  });
+};
+onMounted(getData);
 
 watch(() => props.isLoaded, (newValue) => {
+  console.log("Watcher triggered, newValue:", newValue);
   if (newValue) {
     setTimeout(() => {
-      showText.value = true
+      showText.value = true;
     }, 1000)
   }
 })
@@ -30,12 +44,11 @@ watch(() => props.isLoaded, (newValue) => {
 
 <template>
     <div id="main-wrapper" class="text-white overflow-hidden max-w-[550px] m-auto min-h-[80vh] xsm:min-h-[95vh] flex items-center justify-center">
-        <Transition name="reveal" mode="out-in">
-            <div v-if="props.isLoaded" id="inner-wrapper" class="w-full overflow-hidden" :style="{ backgroundImage: `url('${props.imageUrl}')` }">
+        <Transition name="reveal" mode="out-in" v-show="isLoaded">
+              <div v-if="data && data.imgUrl" id="inner-wrapper" class="w-full overflow-hidden" :style="{ backgroundImage: `url('${urlFromEnv}${data.imgUrl}')` }">
                 <div id="inner-inner-wrapper" class="flex flex-col m-auto h-full p-4 relative">
                     <div :class="{ 'show': showText }" class="mt-auto ml-auto text-4xl sm:text-5xl text-end z-10 animate-text">
-                        <p>{{ h1_1 }}</p>
-                        <p>{{ h1_2 }}</p>
+                        <p v-if="data && data.introText">{{ data.introText }}</p>
                     </div>
                 </div>
             </div> 
