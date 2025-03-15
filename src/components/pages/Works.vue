@@ -6,6 +6,8 @@ import MainTitle from '../common/MainTitle.vue';
 
 const urlFromEnv = import.meta.env.VITE_API_BASE_URL;
 
+const works = ref([]);
+
 const getData = async () => {
  try {
     const response = await axios.get(`${urlFromEnv}/api/Work`);
@@ -16,7 +18,6 @@ const getData = async () => {
 };
 onMounted(getData);
 
-const works = ref([]);
 
 </script>
 
