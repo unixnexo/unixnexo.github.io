@@ -9,7 +9,6 @@ const props = defineProps({ isLoaded: Boolean });
 const emit = defineEmits(['update:isLoaded']);
 
 const data = ref(null);
-const error = ref(null);
 const showText = ref(false);
 
 const getData = async () => {
@@ -18,7 +17,6 @@ const getData = async () => {
     data.value = response.data;
   } catch (err) {
     console.error("Error fetching data:", err);
-    error.value = err.message;
   }
 
   // to check if the img is fully loaded
