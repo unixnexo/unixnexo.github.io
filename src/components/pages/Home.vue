@@ -32,7 +32,6 @@ const getData = async () => {
 onMounted(getData);
 
 watch(() => props.isLoaded, (newValue) => {
-  console.log("Watcher triggered, newValue:", newValue);
   if (newValue) {
     setTimeout(() => {
       showText.value = true;
