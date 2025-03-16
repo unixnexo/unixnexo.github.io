@@ -1,17 +1,36 @@
+<script setup>
+import { computed } from 'vue';
+
+const props = defineProps({
+    hasBg: {
+        type: Boolean,
+        default: false
+    }
+});
+
+const bgClass = computed(() => ({
+  "bg-black/70": props.hasBg,
+  "bg-transparent pointer-events-none": !props.hasBg
+}));
+
+</script>
+
 <template>
-    <div class="spinner">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-        <div class="bar4"></div>
-        <div class="bar5"></div>
-        <div class="bar6"></div>
-        <div class="bar7"></div>
-        <div class="bar8"></div>
-        <div class="bar9"></div>
-        <div class="bar10"></div>
-        <div class="bar11"></div>
-        <div class="bar12"></div>
+    <div :class="bgClass" class="w-screen h-screen fixed top-0 left-0">
+        <div class="spinner">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+            <div class="bar4"></div>
+            <div class="bar5"></div>
+            <div class="bar6"></div>
+            <div class="bar7"></div>
+            <div class="bar8"></div>
+            <div class="bar9"></div>
+            <div class="bar10"></div>
+            <div class="bar11"></div>
+            <div class="bar12"></div>
+        </div>
     </div>
 </template>
 
@@ -33,6 +52,7 @@
         height: 16%;
         /* background: #FFF; */
         background: gray;
+        /* background: rgb(68, 68, 68); */
         position: absolute;
         left: 49%;
         top: 43%;
