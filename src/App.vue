@@ -1,5 +1,13 @@
 <script setup>
+import { onMounted } from 'vue';
 import NavBar from './components/layout/NavBar.vue';
+import { useAuthStore } from './stores/auth';
+
+const authStore = useAuthStore();
+
+onMounted(async () => {
+    const success = await authStore.checkAuthStatus();
+});
 
 </script>
 
