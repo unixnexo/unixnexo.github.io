@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/views/Home.vue';
 import Authenticate from '@/views/Authenticate.vue';
+import AdminDashboard from './views/AdminDashboard.vue';
 
 const routes = [
   { path: '/', component: Home },
-  { path: '/Authenticate', component: Authenticate },
+  { path: '/authenticate', component: Authenticate },
+  { path: '/admin-dashboard', component: AdminDashboard },
 //   { path: '/:pathMatch(.*)*', component: NotFound },
 ];
 

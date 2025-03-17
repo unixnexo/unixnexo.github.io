@@ -26,10 +26,14 @@ const bgClass = computed(() => ({
 watch(() => props.show, (newVal) => {
     if (newVal == true) {
         setTimeout(() => {
-            show.value = false;
+            hideToaster();
         }, 3000);
     }
 });
+
+const hideToaster = () => {
+    show.value = false;
+};
 
 </script>
 
@@ -39,7 +43,7 @@ watch(() => props.show, (newVal) => {
             <p>{{ props.text }}</p>
         </div>
         <div>
-            <button class="flex hover:bg-white/30 p-0.5 rounded-lg transition-colors">
+            <button @click="hideToaster" class="flex hover:bg-white/30 p-0.5 rounded-lg transition-colors">
                 <X />
             </button>
         </div>
