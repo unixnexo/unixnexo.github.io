@@ -38,7 +38,7 @@ const hideToaster = () => {
 </script>
 
 <template>
-    <div :class="[bgClass, { show: show }]" class="toaster-div absolute top-0 -translate-y-20 left-1/2 -translate-x-1/2 flex items-center rounded-lg p-3 shadow-sm space-x-7 min-w-64 transition-transform z-50">
+    <div :class="[bgClass, { show: show }]" class="toaster-div absolute top-0 -translate-y-20 left-1/2 -translate-x-1/2 flex items-center rounded-lg p-3 shadow-sm space-x-7 min-w-[90vw] xsm:min-w-[80vw] sm:min-w-[50vw] md:min-w-64 transition-transform z-50">
         <div class="grow">
             <p>{{ props.text }}</p>
         </div>

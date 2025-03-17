@@ -16,7 +16,7 @@ const bgClass = computed(() => ({
 </script>
 
 <template>
-    <div :class="bgClass" class="w-screen h-screen fixed top-0 left-0">
+    <div :class="bgClass" class="w-screen h-screen fixed top-0 left-0 bottom-0 right-0">
         <div class="spinner">
             <div class="bar1"></div>
             <div class="bar2"></div>
