@@ -3,15 +3,12 @@ import { ref, useTemplateRef } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "@/stores/auth";
 import Windows from '@/components/icon/Windows.vue';
-import Toaster from '@/components/common/Toaster.vue';
 import Loader from "@/components/common/Loader.vue";
 
 const router = useRouter();
 const authStore = useAuthStore()
 
-const showMessage = ref(false);
 const password = ref("");
-const errorMessage = ref("");
 
 const input = useTemplateRef("input");
 
@@ -21,15 +18,12 @@ const login = async () => {
     return;
   }
 
-  showMessage.value = false;
   input.value.blur();
 
   const success = await authStore.login(password.value)
   if (success) {
     router.push({ name: 'admin-dash' })
   } else {
-    errorMessage.value = authStore.error || 'Get the hell outa here';
-    showMessage.value = true;
     input.value.focus();
     input.value.select();
   }
@@ -43,8 +37,6 @@ const login = async () => {
             <Windows />
         </button>
     </form>
-
-    <Toaster :show="showMessage" :text="errorMessage" type="error" />
 
     <Loader v-if="authStore.isLoading" :hasBg="true" />
 </template>
