@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useGeneralInfoStore } from '@/stores/generalInfo';
 import Accordion from '@/components/common/Accordion.vue';
 import LabelInput from '@/components/common/LabelInput.vue';
@@ -7,19 +7,39 @@ import CustomButton from '@/components/common/CustomButton.vue';
 
 const generalInfoStore = useGeneralInfoStore();
 
-onMounted(async () => {
-    // Get GeneralInfo
-    await generalInfoStore.get(); 
+const formData = ref({
+  introText: '',
+  imgUrl: ''
 });
 
-const handleSubmit = () => {
-    console.log('submit');  
+onMounted(async () => {
+    // Get GeneralInfo
+    const success = await generalInfoStore.get();
+    if (success) {
+        formData.value.introText = generalInfoStore.generalInfo.introText;
+    }
+});
+
+// Add GeneralInfo
+const handleSubmit = async () => {
+    const success = await generalInfoStore.add(formData.value);
+    if (success) {
+        formData.value = {
+            introText: '',
+            imgUrl: ''
+        };
+    }
 };
 
 // Delete GeneralInfo
 const handleDelete = async () => {
-    const d = await generalInfoStore.delete();
-    console.log(d);
+    const success = await generalInfoStore.delete();
+    if (success) {
+        formData.value = {
+            introText: '',
+            imgUrl: ''
+        };
+    }
 };
 
 </script>
@@ -32,11 +52,11 @@ const handleDelete = async () => {
                 <div class="flex space-x-3">
 
                     <div class="flex flex-col grow">
-                        <LabelInput label="intro text" id="introText" :inputValue="generalInfoStore.generalInfo.introText" />
-                        <LabelInput label="profile" id="profile" inputType="file" marginTop="22px" />
+                        <LabelInput label="intro text" id="introText" v-model="formData.introText" />
+                        <LabelInput label="profile" id="profile" inputType="file" marginTop="22px" v-model="formData.imgUrl" />
                         <div class="mt-auto space-x-2 pt-5">
-                            <CustomButton title="send" bgColor="bg-green-600/70" btnType="submit" />
-                            <CustomButton @click="handleDelete" title="DEL" bgColor="bg-red-600/70" />
+                            <CustomButton title="send" bgColor="bg-green-600/70" btnType="submit" :btnDisable="generalInfoStore.isLoading" />
+                            <CustomButton @click="handleDelete" title="DEL" bgColor="bg-red-600/70" :btnDisable="generalInfoStore.isLoading" />
                         </div>
                     </div>
 

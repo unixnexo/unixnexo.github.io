@@ -35,6 +35,25 @@ export const useGeneralInfoStore = defineStore('generalInfo', {
       }
     },
 
+    async add(generalInfoData) {
+      const toastStore = useToastStore();
+      this.isLoading = true;
+      this.error = null;
+
+      try {
+        await axios.post(`${this.urlFromEnv}/api/GeneralInfo`, generalInfoData, { withCredentials: true });
+        this.generalInfo = response.data;
+        toastStore.showToast('Added general info', 'success');
+        return true;
+      } catch (error) {
+        this.error = error.response?.data?.message || 'Failed to add general info';
+        toastStore.showToast(this.error, 'error');
+        return false;
+      } finally {
+        this.isLoading = false;
+      }
+    },
+
     async delete() {
       const toastStore = useToastStore();
       this.isLoading = true;
@@ -43,6 +62,11 @@ export const useGeneralInfoStore = defineStore('generalInfo', {
       try {
         await axios.delete(`${this.urlFromEnv}/api/GeneralInfo`, { withCredentials: true });
         toastStore.showToast('Delete successful', 'success');
+        this.generalInfo =  {
+          id: null,
+          introText: '',
+          imgUrl: ''
+        };
         return true;
       } catch (error) {
         this.error = error.response?.data?.message || 'Failed to delete general info';

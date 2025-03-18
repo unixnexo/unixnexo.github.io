@@ -1299,6 +1299,22 @@ body:is(.dark *){
   background-color: rgb(0 0 0 / 0.05);
 }
 
+.disabled\:hidden:disabled{
+  display: none;
+}
+
+.disabled\:p-5:disabled{
+  padding: 1.25rem;
+}
+
+.disabled\:opacity-100:disabled{
+  opacity: 1;
+}
+
+.disabled\:opacity-45:disabled{
+  opacity: 0.45;
+}
+
 .dark\:divide-white\/60:is(.dark *) > :not([hidden]) ~ :not([hidden]){
   border-color: rgb(255 255 255 / 0.6);
 }

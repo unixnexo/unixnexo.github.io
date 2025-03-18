@@ -8,18 +8,24 @@ const props = defineProps({
         type: String,
         require: true
     },
-    inputType: {
-        type: String,
-        default: "text"
-    },
     marginTop: {
         type: String,
         default: "0px"
     },
     inputValue: {
         type: String,
+    },
+    inputType: {
+        type: String,
+        default: "text"
+    },
+    modelValue: {
+        type: String,
+        default: ''
     }
 });
+
+defineEmits(['update:modelValue']);
 </script>
 
 <template>
@@ -29,7 +35,8 @@ const props = defineProps({
             :type="props.inputType" 
             :id="props.id" 
             :name="props.id"
-            :value="props.inputValue"
+            :value="modelValue"
+            @input="$emit('update:modelValue', $event.target.value)"
             v-bind="props.inputType === 'file' ? { accept: 'image/*' } : {}"
             class="w-full p-1.5 rounded-md bg-transparent border-2 border-black/50 dark:border-white/70 outline-none focus:border-black" 
             :placeholder="props.label" 
