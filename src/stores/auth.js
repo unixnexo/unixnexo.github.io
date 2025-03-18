@@ -1,5 +1,6 @@
-import { defineStore } from 'pinia'
-import axios from 'axios'
+import { defineStore } from 'pinia';
+import axios from 'axios';
+import { useToastStore } from './toast';
 
 export const useAuthStore = defineStore('auth', {
 
@@ -8,16 +9,12 @@ export const useAuthStore = defineStore('auth', {
     isLoading: false,
     error: null,
     urlFromEnv: import.meta.env.VITE_API_BASE_URL,
-    toast: {
-      show: false,
-      message: '',
-      type: ''
-    }
   }),
 
   actions: {
 
     async login(password) {
+      const toastStore = useToastStore();
       this.isLoading = true
       this.error = null
       
@@ -28,13 +25,13 @@ export const useAuthStore = defineStore('auth', {
         
         if (response.data.success) {
           this.isAuthenticated = true;
-          this.showToast('Login successful', 'success');
+          toastStore.showToast('Login successful', 'success');
           return true;
         }
         return false;
       } catch (error) {
         this.error = error.response?.data?.message || 'Login failed';
-        this.showToast(this.error, 'error');
+        toastStore.showToast(this.error, 'error');
         return false;
       } finally {
         this.isLoading = false;
@@ -61,6 +58,7 @@ export const useAuthStore = defineStore('auth', {
     },
 
     async logout() {
+      const toastStore = useToastStore();
       this.isLoading = true;
       this.error = null;
       
@@ -72,32 +70,22 @@ export const useAuthStore = defineStore('auth', {
         if (response.data.success) {
           this.isAuthenticated = false;
           this.user = null;
-          this.showToast('Logout successful', 'success');
+          toastStore.showToast('Logout successful', 'success');
           return true;
         } else {
           this.error = response.data.message || 'Logout failed';
-          this.showToast(this.error, 'error');
+          toastStore.showToast(this.error, 'error');
           return false;
         }
       } catch (error) {
         this.error = error.response?.data?.message || 'Logout failed';
-        this.showToast(this.error, 'error');
+        toastStore.showToast(this.error, 'error');
         return false;
       } finally {
         this.isLoading = false;
       }
     },
 
-    showToast(message, type = 'info') {
-      this.toast.message = message;
-      this.toast.type = type;
-      this.toast.show = true;
-      
-      setTimeout(() => {
-        this.toast.show = false;
-      }, 2000);
-    }
-
+  
   }
-
 });

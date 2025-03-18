@@ -92,6 +92,7 @@ onUnmounted(() => {
 
             <!-- only if authenticated -->
             <div v-if="isAuthenticated" class="flex items-center space-x-3">
+                <a href="https://unixnexo-portfolio-api.runasp.net/swagger/index.html" class="on-mouse" target="_blank">Swagger</a>
                 <RouterLink :to="{ name: 'admin-dash' }" class="on-mouse">Dashboard</RouterLink>
                 <AuthLogout />
             </div>

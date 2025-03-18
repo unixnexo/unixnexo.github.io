@@ -3,8 +3,10 @@ import { onMounted } from 'vue';
 import NavBar from './components/layout/NavBar.vue';
 import { useAuthStore } from './stores/auth';
 import Toaster from './components/common/Toaster.vue';
+import { useToastStore } from './stores/toast';
 
 const authStore = useAuthStore();
+const toastStore = useToastStore();
 
 onMounted(async () => {
     const success = await authStore.checkAuthStatus();
@@ -17,7 +19,7 @@ onMounted(async () => {
         <NavBar />
         <RouterView />
 
-        <Toaster :show="authStore.toast.show" :text="authStore.toast.message" :type="authStore.toast.type" />
+        <Toaster :show="toastStore.show" :text="toastStore.message" :type="toastStore.type" />
     </div>
 </template>
 

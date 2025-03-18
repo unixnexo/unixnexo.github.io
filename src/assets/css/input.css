@@ -23,6 +23,11 @@
   color: white;
 }
 
+html.dark ::selection {
+  background-color: rgba(255, 255, 255, 0.822);
+  color: black;
+}
+
 html,
 body {
   scroll-behavior: smooth;
