@@ -6,6 +6,7 @@ import FormContentWrapper from '../common/FormContentWrapper.vue';
 import { useWorkStore } from '@/stores/work';
 import { ref, onMounted } from 'vue';
 import FormContentWrapperGradient from '../common/FormContentWrapperGradient.vue';
+import Loader from '../common/Loader.vue';
 
 const workStore = useWorkStore();
 
@@ -30,6 +31,12 @@ onMounted(async () => {
 
 // Create
 const handleCreate = async () => {
+    if (!formDataCreate.value.Title.trim() && 
+        !formDataCreate.value.GithubUrl.trim() && 
+        !formDataCreate.value.WebsiteUrl.trim()) {
+        return;
+    }
+    
     const success = await workStore.add(formDataCreate.value);
     if (success) {
         formDataCreate.value = ref({
@@ -94,4 +101,6 @@ const handleDelete = async (id) => {
             </div>
         </div>
     </Accordion>
+
+    <Loader v-if="workStore.isLoading" :hasBg="true" />
 </template>
