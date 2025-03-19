@@ -1,29 +1,22 @@
 <script setup>
 import imagesLoaded from 'imagesloaded';
-import axios from 'axios';
 import { onMounted, ref, watch, nextTick } from 'vue';
+import { useGeneralInfoStore } from '@/stores/generalInfo';
 
-const urlFromEnv = import.meta.env.VITE_API_BASE_URL;
+const generalInfoStore = useGeneralInfoStore();
 
 const props = defineProps({ isLoaded: Boolean });
 const emit = defineEmits(['update:isLoaded']);
 
-const data = ref(null);
 const showText = ref(false);
 
 const getData = async () => {
-  try {
-    const response = await axios.get(`${urlFromEnv}/api/GeneralInfo/`);
-    data.value = response.data;
-  } catch (err) {
-    console.error("Error fetching data:", err);
-  }
+  await generalInfoStore.get();
 
   // to check if the img is fully loaded
   await nextTick();
   
   imagesLoaded(document.querySelector('#inner-wrapper'), { background: true }, () => {
-    console.log('Fully loaded');
     emit('update:isLoaded', true);
   });
 };
@@ -40,17 +33,17 @@ watch(() => props.isLoaded, (newValue) => {
 </script>
 
 <template>
-    <div id="main-wrapper" class="text-white overflow-hidden max-w-[550px] m-auto min-h-[80vh] xsm:min-h-[95vh] flex items-center justify-center">
-        <Transition name="reveal" mode="out-in" v-show="isLoaded">
-              <div v-if="data && data.imgUrl" id="inner-wrapper" class="w-full overflow-hidden" :style="{ backgroundImage: `url('${urlFromEnv}${data.imgUrl}')` }">
-                <div id="inner-inner-wrapper" class="flex flex-col m-auto h-full p-4 relative">
-                    <div :class="{ 'show': showText }" class="mt-auto ml-auto text-4xl sm:text-5xl text-end z-10 animate-text">
-                        <p v-if="data && data.introText">{{ data.introText }}</p>
-                    </div>
-                </div>
-            </div> 
-        </Transition>
-    </div>
+  <div id="main-wrapper" class="text-white overflow-hidden max-w-[550px] m-auto min-h-[80vh] xsm:min-h-[95vh] flex items-center justify-center">
+    <Transition name="reveal" mode="out-in" v-show="isLoaded">
+        <div v-if="generalInfoStore.generalInfo && generalInfoStore.generalInfo.imgUrl" id="inner-wrapper" class="w-full overflow-hidden" :style="{ backgroundImage: `url('${generalInfoStore.urlFromEnv}${generalInfoStore.generalInfo.imgUrl}')` }">
+          <div id="inner-inner-wrapper" class="flex flex-col m-auto h-full p-4 relative">
+            <div :class="{ 'show': showText }" class="mt-auto ml-auto text-4xl sm:text-5xl text-end z-10 animate-text">
+                <p v-if="generalInfoStore.generalInfo && generalInfoStore.generalInfo.introText">{{ generalInfoStore.generalInfo.introText }}</p>
+            </div>
+          </div>
+      </div> 
+    </Transition>
+  </div>
 </template>
 
 <style scoped>
