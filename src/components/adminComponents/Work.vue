@@ -5,32 +5,50 @@ import CustomButton from '@/components/common/CustomButton.vue';
 import FormContentWrapper from '../common/FormContentWrapper.vue';
 import { useWorkStore } from '@/stores/work';
 import { ref, onMounted } from 'vue';
+import FormContentWrapperGradient from '../common/FormContentWrapperGradient.vue';
 
 const workStore = useWorkStore();
 
-const formData = ref({
+const formDataUpdate = ref({
     Id: 0,
     Title: '',
     GithubUrl: '',
     WebsiteUrl: ''
 });
 
+const formDataCreate = ref({
+    Title: '',
+    GithubUrl: '',
+    WebsiteUrl: ''
+});
+
+
 onMounted(async () => {
     // Get Works
     await workStore.get();
 });
 
-// Create ?? need to come up with a way
+// Create
+const handleCreate = async () => {
+    const success = await workStore.add(formDataCreate.value);
+    if (success) {
+        formDataCreate.value = ref({
+            Title: '',
+            GithubUrl: '',
+            WebsiteUrl: ''
+        });
+    }
+};
 
 // Update
 const handleUpdate = async (work) => {
-    formData.value = {
+    formDataUpdate.value = {
         Id: work.id,
         Title: work.title,
         GithubUrl: work.githubUrl,
         WebsiteUrl: work.websiteUrl
     };
-    await workStore.update(formData.value);
+    await workStore.update(formDataUpdate.value);
 };
 
 // Delete
@@ -43,11 +61,22 @@ const handleDelete = async (id) => {
 <template>
     <Accordion title="Work" titleBgColor="bg-green-500/50">
         <div class="space-y-5">
-            <div v-for="work in workStore.works" :key="work.id">
+            <!-- create form -->
+            <FormContentWrapperGradient>
+                <form method="POST" @submit.prevent="handleCreate">
+                    <LabelInput label="title" id="title" v-model="formDataCreate.Title" />
+                    <LabelInput label="githubUrl" id="githubUrl" marginTop="12px" v-model="formDataCreate.GithubUrl" />
+                    <LabelInput label="websiteUrl" id="websiteUrl" marginTop="12px" v-model="formDataCreate.WebsiteUrl" />
+                    <CustomButton title="Create" bgColor="bg-green-600/70" btnType="submit" :btnDisable="workStore.isLoading" class="mt-5" />
+                </form>
+            </FormContentWrapperGradient>
+
+            <!-- works -->
+            <div v-for="(work, index) in workStore.works" :key="work.id">
                 <form method="POST" @submit.prevent="handleUpdate(work)">
                     <FormContentWrapper>
                         <template #idHeader>
-                            <span>#{{ work.id }}</span>
+                            <span>#{{ workStore.works.length - index }}</span>
                         </template>
                         <template #inputBody>
                             <input type="hidden" name="id" v-model="work.id" readonly/>

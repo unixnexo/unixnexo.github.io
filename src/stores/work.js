@@ -9,13 +9,6 @@ export const useWorkStore = defineStore('work', {
     error: null,
     urlFromEnv: import.meta.env.VITE_API_BASE_URL,
     works: [],
-    // currentWork: {
-    //   id: null,
-    //   title: '',
-    //   githubUrl: '',
-    //   websiteUrl: '',
-    //   createdAt: '',
-    // }
   }),
 
   actions: {
@@ -33,6 +26,30 @@ export const useWorkStore = defineStore('work', {
         this.error = error.response?.data?.message || 'Failed to fetch works';
         toastStore.showToast(this.error, 'error');
         return null;
+      } finally {
+        this.isLoading = false;
+      }
+    },
+
+    async add(formData) {
+      const toastStore = useToastStore();
+      this.isLoading = true;
+      this.error = null;
+
+      try {
+        const response = await axios.post(`${this.urlFromEnv}/api/Work`, formData, { withCredentials: true });
+        if (response.status === 201) {
+          if (response.data) {
+            this.works.unshift(response.data); // Add to beginning of array
+          }
+          toastStore.showToast('Added general info', 'success');
+          return true;
+        }
+        return false;
+      } catch (error) {
+        this.error = error.response?.data?.message || 'Failed to add work';
+        toastStore.showToast(this.error, 'error');
+        return false;
       } finally {
         this.isLoading = false;
       }
