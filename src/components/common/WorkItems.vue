@@ -20,12 +20,18 @@ const props = defineProps({
             <p class="line-clamp-1">{{ props.title }}</p>
         </div>
         <div class="flex space-x-1.5 pl-3">
-            <a :href="props.repoUrl" target="_blank">
+            <a v-if="props.repoUrl" :href="props.repoUrl" target="_blank">
                 <Github size="18" />
             </a>
-            <a :href="props.url" target="_blank">
+            <span v-else class="cursor-not-allowed">
+                <Github size="18" style="opacity: 0.3;" class="cursor-not-allowed" />
+            </span>
+            <a v-if="props.url" :href="props.url" target="_blank">
                 <Link size="16" />
             </a>
+            <span v-else class="cursor-not-allowed">
+                <Link size="16" style="opacity: 0.3;" class="cursor-not-allowed" />
+            </span>
         </div>
     </div>
 </template>

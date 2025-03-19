@@ -6,6 +6,9 @@ import { RouterLink } from 'vue-router';
 import Sun from '../icon/Sun.vue';
 import Moon from '../icon/Moon.vue';
 import AuthLogout from '@/components/adminComponents/AuthLogout.vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
 
 const { theme, toggleTheme } = useDarkMode();
 const authStore = useAuthStore();
@@ -84,7 +87,7 @@ onUnmounted(() => {
 <template>
     <nav ref="nav" class="flex m-auto pt-5 space-x-3 *:space-x-3.5 will-change-auto items-center">
         <div class="flex items-baseline">
-            <RouterLink v-if="isAuthenticated" :to="{ name: 'home' }" class="on-mouse">Home</RouterLink>
+            <RouterLink v-if="isAuthenticated || route.name === 'authenticate'" :to="{ name: 'home' }" class="on-mouse">Home</RouterLink>
             <a v-else href="#home" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="on-mouse">Home</a>
             <hr class="w-16 md:w-32 h-0.5 border-0 rounded-sm bg-gray-600 dark:bg-white/50 inline-block">
         </div>
@@ -97,9 +100,11 @@ onUnmounted(() => {
                 <AuthLogout />
             </div>
             <!-- -- -->
-            <div v-else class="space-x-3">
-                <a href="#works" class="on-mouse">Works</a>
-                <a href="#SayHi" class="on-mouse">Say Hi</a>
+            <div v-else>
+                <div v-if="route.name !== 'authenticate'" class="space-x-3">
+                    <a href="#works" class="on-mouse">Works</a>
+                    <a href="#SayHi" class="on-mouse">Say Hi</a>
+                </div>
             </div>
             
             <Transition name="fade" mode="out-in">
