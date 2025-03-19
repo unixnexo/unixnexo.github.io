@@ -12,9 +12,6 @@ const props = defineProps({
         type: String,
         default: "0px"
     },
-    inputValue: {
-        type: String,
-    },
     inputType: {
         type: String,
         default: "text"
@@ -34,7 +31,7 @@ defineEmits(['update:modelValue']);
 
 <template>
     <div class="flex flex-col" :style="{ marginTop: `${props.marginTop}` }">
-        <label :for="props.id" class="mb-1.5 text-sm text-black/50 dark:text-white/70">{{ props.label }}</label>
+        <label :for="props.id" class="mb-1 text-sm text-black/50 dark:text-white/70">{{ props.label }}</label>
         <input 
             :type="props.inputType" 
             :id="props.id" 
