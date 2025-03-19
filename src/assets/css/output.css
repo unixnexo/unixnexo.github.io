@@ -686,15 +686,6 @@ video {
   height: 100vh;
 }
 
-.h-max{
-  height: -moz-max-content;
-  height: max-content;
-}
-
-.h-40{
-  height: 10rem;
-}
-
 .min-h-\[80vh\]{
   min-height: 80vh;
 }
@@ -1297,18 +1288,6 @@ body:is(.dark *){
 
 .active\:\*\:bg-black\/5 > *:active{
   background-color: rgb(0 0 0 / 0.05);
-}
-
-.disabled\:hidden:disabled{
-  display: none;
-}
-
-.disabled\:p-5:disabled{
-  padding: 1.25rem;
-}
-
-.disabled\:opacity-100:disabled{
-  opacity: 1;
 }
 
 .disabled\:opacity-45:disabled{

@@ -22,6 +22,10 @@ const props = defineProps({
     modelValue: {
         type: String,
         default: ''
+    },
+    onChangeFunc: {
+        type: Function,
+        default: () => {}
     }
 });
 
@@ -37,6 +41,7 @@ defineEmits(['update:modelValue']);
             :name="props.id"
             :value="modelValue"
             @input="$emit('update:modelValue', $event.target.value)"
+            @change="props.onChangeFunc"
             v-bind="props.inputType === 'file' ? { accept: 'image/*' } : {}"
             class="w-full p-1.5 rounded-md bg-transparent border-2 border-black/50 dark:border-white/70 outline-none focus:border-black" 
             :placeholder="props.label" 

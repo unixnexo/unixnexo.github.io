@@ -9,8 +9,8 @@ const generalInfoStore = useGeneralInfoStore();
 
 const formData = ref({
   introText: '',
-  imgUrl: ''
 });
+const selectedFile = ref(null);
 
 onMounted(async () => {
     // Get GeneralInfo
@@ -20,15 +20,20 @@ onMounted(async () => {
     }
 });
 
+const handleFileChange = (event) => {
+  selectedFile.value = event.target.files[0];  
+};
+
 // Add GeneralInfo
 const handleSubmit = async () => {
-    const success = await generalInfoStore.add(formData.value);
-    if (success) {
-        formData.value = {
-            introText: '',
-            imgUrl: ''
-        };
+    const formDataObj = new FormData();
+    formDataObj.append('introText', formData.value.introText);
+
+    if (selectedFile.value) {
+        formDataObj.append('file', selectedFile.value); 
     }
+
+    await generalInfoStore.add(formDataObj);
 };
 
 // Delete GeneralInfo
@@ -53,7 +58,7 @@ const handleDelete = async () => {
 
                     <div class="flex flex-col grow">
                         <LabelInput label="intro text" id="introText" v-model="formData.introText" />
-                        <LabelInput label="profile" id="profile" inputType="file" marginTop="22px" v-model="formData.imgUrl" />
+                        <LabelInput label="profile" id="profile" inputType="file" marginTop="22px" v-model="formData.imgUrl" :onChangeFunc="handleFileChange" />
                         <div class="mt-auto space-x-2 pt-5">
                             <CustomButton title="send" bgColor="bg-green-600/70" btnType="submit" :btnDisable="generalInfoStore.isLoading" />
                             <CustomButton @click="handleDelete" title="DEL" bgColor="bg-red-600/70" :btnDisable="generalInfoStore.isLoading" />

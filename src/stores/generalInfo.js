@@ -35,13 +35,21 @@ export const useGeneralInfoStore = defineStore('generalInfo', {
       }
     },
 
-    async add(generalInfoData) {
+    async add(formData) {
       const toastStore = useToastStore();
       this.isLoading = true;
       this.error = null;
 
       try {
-        await axios.post(`${this.urlFromEnv}/api/GeneralInfo`, generalInfoData, { withCredentials: true });
+        const response = await axios.post(`${this.urlFromEnv}/api/GeneralInfo`, 
+          formData, 
+          { 
+            withCredentials: true,
+            headers: {
+              "Content-Type": "multipart/form-data"
+            }
+          });
+        
         this.generalInfo = response.data;
         toastStore.showToast('Added general info', 'success');
         return true;
