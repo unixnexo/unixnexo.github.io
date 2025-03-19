@@ -10,17 +10,16 @@ const emit = defineEmits(['update:isLoaded']);
 
 const showText = ref(false);
 
-const getData = async () => {
+onMounted(async () => {
   await generalInfoStore.get();
 
   // to check if the img is fully loaded
   await nextTick();
-  
+
   imagesLoaded(document.querySelector('#inner-wrapper'), { background: true }, () => {
     emit('update:isLoaded', true);
   });
-};
-onMounted(getData);
+});
 
 watch(() => props.isLoaded, (newValue) => {
   if (newValue) {
