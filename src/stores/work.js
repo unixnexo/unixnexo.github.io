@@ -38,6 +38,30 @@ export const useWorkStore = defineStore('work', {
       }
     },
 
+    async delete(id) {
+      const toastStore = useToastStore();
+      this.isLoading = true;
+      this.error = null;
+
+      try {
+        const response = await axios.delete(`${this.urlFromEnv}/api/Work/${id}`, { withCredentials: true });
+        if (response.status === 200) {
+          this.works = this.works.filter(work => work.id !== id);
+          toastStore.showToast('Delete successful', 'success');
+          return true;
+        }
+        return false;
+      } catch (error) {
+        this.error = error.response?.data?.message || 'Failed to delete work';
+        toastStore.showToast(this.error, 'error');
+        return false;
+      } finally {
+        this.isLoading = false;
+      }
+
+    },
+
+
   }
 
 });
