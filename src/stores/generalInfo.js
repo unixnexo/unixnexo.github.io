@@ -54,7 +54,38 @@ export const useGeneralInfoStore = defineStore('generalInfo', {
         toastStore.showToast('Added general info', 'success');
         return true;
       } catch (error) {
-        this.error = error.response?.data?.message || 'Failed to add general info';
+        if (error.response && error.response.data?.error === "OnlyOneGeneralInfoAllowed") {
+          throw new Error("OnlyOneGeneralInfoAllowed");
+        } else {
+          this.error = error.response?.data?.message || 'Failed to add general info';
+          toastStore.showToast(this.error, 'error');
+        }
+        return false;
+      } finally {
+        this.isLoading = false;
+      }
+    },
+
+    async update(formData) {
+      const toastStore = useToastStore();
+      this.isLoading = true;
+      this.error = null;
+
+      try {
+        const response = await axios.put(`${this.urlFromEnv}/api/GeneralInfo`, 
+          formData, 
+          { 
+            withCredentials: true,
+            headers: {
+              "Content-Type": "multipart/form-data"
+            }
+          });
+        
+        this.generalInfo = response.data.data;
+        toastStore.showToast('Updated general info', 'success');
+        return true;
+      } catch (error) {
+        this.error = error.response?.data?.message || 'Failed to update general info';
         toastStore.showToast(this.error, 'error');
         return false;
       } finally {

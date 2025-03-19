@@ -4,6 +4,7 @@ import { useGeneralInfoStore } from '@/stores/generalInfo';
 import Accordion from '@/components/common/Accordion.vue';
 import LabelInput from '@/components/common/LabelInput.vue';
 import CustomButton from '@/components/common/CustomButton.vue';
+import Loader from '../common/Loader.vue';
 
 const generalInfoStore = useGeneralInfoStore();
 
@@ -24,7 +25,7 @@ const handleFileChange = (event) => {
   selectedFile.value = event.target.files[0];  
 };
 
-// Add GeneralInfo
+// Add or Update GeneralInfo
 const handleSubmit = async () => {
     const formDataObj = new FormData();
     formDataObj.append('introText', formData.value.introText);
@@ -33,10 +34,16 @@ const handleSubmit = async () => {
         formDataObj.append('file', selectedFile.value); 
     }
 
-    await generalInfoStore.add(formDataObj);
+    try {
+        // Add
+        await generalInfoStore.add(formDataObj);
+    } catch (error) {
+        if (error.message === "OnlyOneGeneralInfoAllowed") {
+            // Update
+            await generalInfoStore.update(formDataObj);
+        }
+    }
 };
-
-// Update GeneralInfo *************************
 
 // Delete GeneralInfo
 const handleDelete = async () => {
@@ -73,4 +80,6 @@ const handleDelete = async () => {
             </div>
         </form>
     </Accordion>
+
+    <Loader v-if="generalInfoStore.isLoading" :hasBg="true" />
 </template>
