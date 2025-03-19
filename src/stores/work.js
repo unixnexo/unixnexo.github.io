@@ -9,13 +9,13 @@ export const useWorkStore = defineStore('work', {
     error: null,
     urlFromEnv: import.meta.env.VITE_API_BASE_URL,
     works: [],
-    currentWork: {
-      id: null,
-      title: '',
-      githubUrl: '',
-      websiteUrl: '',
-      createdAt: '',
-    }
+    // currentWork: {
+    //   id: null,
+    //   title: '',
+    //   githubUrl: '',
+    //   websiteUrl: '',
+    //   createdAt: '',
+    // }
   }),
 
   actions: {
@@ -33,6 +33,37 @@ export const useWorkStore = defineStore('work', {
         this.error = error.response?.data?.message || 'Failed to fetch works';
         toastStore.showToast(this.error, 'error');
         return null;
+      } finally {
+        this.isLoading = false;
+      }
+    },
+
+    async update(formData) {
+      const toastStore = useToastStore();
+      this.isLoading = true;
+      this.error = null;
+
+      try {
+        const response = await axios.put(`${this.urlFromEnv}/api/Work`, formData, { withCredentials: true });
+        if (response.status === 200) {
+          const index = this.works.findIndex(work => work.id === formData.Id);
+          if (index !== -1) {
+            // Update only the fields that were sent
+            this.works[index] = {
+              ...this.works[index], // Keep all existing properties
+              title: formData.Title || this.works[index].title, // Update title if provided, otherwise keep old value
+              githubUrl: formData.GithubUrl || this.works[index].githubUrl,
+              websiteUrl: formData.WebsiteUrl || this.works[index].websiteUrl
+            };
+          }
+          toastStore.showToast('Updated work', 'success');
+          return true;
+        }
+        return false;
+      } catch (error) {
+        this.error = error.response?.data?.message || 'Failed to update work';
+        toastStore.showToast(this.error, 'error');
+        return false;
       } finally {
         this.isLoading = false;
       }
@@ -60,7 +91,6 @@ export const useWorkStore = defineStore('work', {
       }
 
     },
-
 
   }
 

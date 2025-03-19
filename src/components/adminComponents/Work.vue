@@ -9,10 +9,10 @@ import { ref, onMounted } from 'vue';
 const workStore = useWorkStore();
 
 const formData = ref({
-    title: '',
-    githubUrl: '',
-    websiteUrl: '',
-    createdAt: '',
+    Id: 0,
+    Title: '',
+    GithubUrl: '',
+    WebsiteUrl: ''
 });
 
 onMounted(async () => {
@@ -23,8 +23,14 @@ onMounted(async () => {
 // Create ?? need to come up with a way
 
 // Update
-const handleSubmit = async () => {
-
+const handleUpdate = async (work) => {
+    formData.value = {
+        Id: work.id,
+        Title: work.title,
+        GithubUrl: work.githubUrl,
+        WebsiteUrl: work.websiteUrl
+    };
+    await workStore.update(formData.value);
 };
 
 // Delete
@@ -36,25 +42,27 @@ const handleDelete = async (id) => {
 
 <template>
     <Accordion title="Work" titleBgColor="bg-green-500/50">
-        <form method="POST" @submit.prevent="handleSubmit" class="space-y-5">
-
-            <FormContentWrapper v-for="work in workStore.works" :key="work.id">
-                <template #idHeader>
-                    <span>#{{ work.id }}</span>
-                </template>
-                <template #inputBody>
-                    <!-- <input type="hidden" name="id" :value="work.id" readonly/> -->
-                    <LabelInput label="title" id="title" v-model="work.title" />
-                    <LabelInput label="githubUrl" id="githubUrl" marginTop="12px" v-model="work.githubUrl" />
-                    <LabelInput label="websiteUrl" id="websiteUrl" marginTop="12px" v-model="work.websiteUrl" />
-                    <p class="mt-2">Created: {{ new Date(work.createdAt).toLocaleDateString() }}</p>
-                </template>
-                <template #btnFooter>
-                    <CustomButton title="send" bgColor="bg-green-600/70" btnType="submit" :btnDisable="workStore.isLoading" />
-                    <CustomButton @click="handleDelete(work.id)" title="DEL" bgColor="bg-red-600/70" btnType="button" :btnDisable="workStore.isLoading" />
-                </template>
-            </FormContentWrapper>
-
-        </form>
+        <div class="space-y-5">
+            <div v-for="work in workStore.works" :key="work.id">
+                <form method="POST" @submit.prevent="handleUpdate(work)">
+                    <FormContentWrapper>
+                        <template #idHeader>
+                            <span>#{{ work.id }}</span>
+                        </template>
+                        <template #inputBody>
+                            <input type="hidden" name="id" v-model="work.id" readonly/>
+                            <LabelInput label="title" id="title" v-model="work.title" />
+                            <LabelInput label="githubUrl" id="githubUrl" marginTop="12px" v-model="work.githubUrl" />
+                            <LabelInput label="websiteUrl" id="websiteUrl" marginTop="12px" v-model="work.websiteUrl" />
+                            <p class="mt-2">Created: {{ new Date(work.createdAt).toLocaleDateString() }}</p>
+                        </template>
+                        <template #btnFooter>
+                            <CustomButton title="send" bgColor="bg-green-600/70" btnType="submit" :btnDisable="workStore.isLoading" />
+                            <CustomButton @click="handleDelete(work.id)" title="DEL" bgColor="bg-red-600/70" btnType="button" :btnDisable="workStore.isLoading" />
+                        </template>
+                    </FormContentWrapper>
+                </form>
+            </div>
+        </div>
     </Accordion>
 </template>
