@@ -31,6 +31,38 @@ export const useLinkToMeStore = defineStore('linkToMe', {
           }
         },
 
+        async add(formData) {
+            const toastStore = useToastStore();
+            this.isLoading = true;
+            this.error = null;
+      
+            try {
+              const response = await axios.post(`${this.urlFromEnv}/api/LinkToMe`, 
+                formData, 
+                { 
+                  withCredentials: true,
+                  headers: {
+                    "Content-Type": "multipart/form-data"
+                  }
+                });
+              
+                if (response.status === 200) {
+                    if (response.data) {
+                      this.links.unshift(response.data);
+                    }
+                    toastStore.showToast('Added link to me', 'success');
+                    return true;
+                }
+                return false;
+            } catch (error) {
+                this.error = error.response?.data?.message || 'Failed to add link to me';
+                toastStore.showToast(this.error, 'error');
+              return false;
+            } finally {
+              this.isLoading = false;
+            }
+        },
+
         async update(formData) {
             const toastStore = useToastStore();
             this.isLoading = true;
@@ -74,7 +106,7 @@ export const useLinkToMeStore = defineStore('linkToMe', {
             } finally {
               this.isLoading = false;
             }
-          },
+        },
 
         async delete(id) {
             const toastStore = useToastStore();

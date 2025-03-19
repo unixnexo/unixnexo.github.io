@@ -1,11 +1,12 @@
 <script setup>
 import Accordion from '../common/Accordion.vue';
 import { useLinkToMeStore } from '@/stores/linkToMe';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, useTemplateRef } from 'vue';
 import FormContentWrapper from '../common/FormContentWrapper.vue';
 import LabelInput from '../common/LabelInput.vue';
 import CustomButton from '../common/CustomButton.vue';
 import Loader from '../common/Loader.vue';
+import FormContentWrapperGradient from '../common/FormContentWrapperGradient.vue';
 
 const linkToMeStore = useLinkToMeStore();
 
@@ -14,7 +15,13 @@ const formDataUpdate = ref({
     Title: '',
     Url: '',
 });
+
+const formDataCreate = ref({
+    Title: '',
+    Url: '',
+});
 const selectedFile = ref(null);
+const createFormRef = useTemplateRef('createForm');
 
 onMounted(async () => {
     // Get Links
@@ -23,6 +30,35 @@ onMounted(async () => {
 
 const handleFileChange = (event) => {
   selectedFile.value = event.target.files[0];  
+};
+
+// Create
+const handleCreate = async () => {
+    if (!formDataCreate.value.Title.trim() && 
+        !formDataCreate.value.Url.trim()) {
+        return;
+    }
+
+    const formDataObj = new FormData();
+    
+    formDataObj.append('Title', formDataCreate.value.Title);
+    formDataObj.append('Url', formDataCreate.value.Url);
+
+    if (selectedFile.value) {
+        formDataObj.append('File', selectedFile.value);
+    }
+    
+    const success = await linkToMeStore.add(formDataObj);
+
+    if (success) {
+        formDataCreate.value = {
+            Title: '',
+            Url: ''
+        };
+        selectedFile.value = null;
+        createFormRef.value.reset();
+    }
+
 };
 
 // Update
@@ -44,6 +80,7 @@ const handleUpdate = async (link) => {
     }
     
     await linkToMeStore.update(formDataObj);
+    selectedFile.value = null;
 };
 
 // Delete
@@ -57,9 +94,18 @@ const handleDelete = async (id) => {
     <Accordion title="Link To Me" titleBgColor="bg-orange-500/50">
 
         <div class="space-y-5">
+            <!-- create form -->
+            <FormContentWrapperGradient>
+                <form method="POST" ref="createForm" @submit.prevent="handleCreate()">                
+                    <LabelInput label="title" id="title" v-model="formDataCreate.Title" />
+                    <LabelInput label="url" id="url" marginTop="12px" v-model="formDataCreate.Url" />
+                    <LabelInput label="imgUrl" id="imgUrl" marginTop="12px" inputType="file" :onChangeFunc="handleFileChange" />
+                    <CustomButton title="Create" bgColor="bg-green-600/70" btnType="submit" :btnDisable="linkToMeStore.isLoading" class="mt-5" />
+                </form>
+            </FormContentWrapperGradient>
 
             <!-- links to me -->
-            <div v-for="(link, index) in linkToMeStore.links" :key="link.id">
+            <div v-for="(link, index) in linkToMeStore.links.slice().reverse()" :key="link.id">
                 <form method="POST" @submit.prevent="handleUpdate(link)">
                     <FormContentWrapper>
                         <template #idHeader>
