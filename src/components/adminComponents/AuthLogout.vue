@@ -1,8 +1,7 @@
 <script setup>
-import Logout from '../icon/Logout.vue';
+import Logout from '@/components/icon/Logout.vue';
 import { useAuthStore } from '@/stores/auth';
 import { useRouter } from 'vue-router';
-import { ref } from 'vue';
 
 const authStore = useAuthStore();
 const router = useRouter();

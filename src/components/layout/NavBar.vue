@@ -5,7 +5,7 @@ import { useAuthStore } from '@/stores/auth';
 import { RouterLink } from 'vue-router';
 import Sun from '../icon/Sun.vue';
 import Moon from '../icon/Moon.vue';
-import AuthLogout from '../common/AuthLogout.vue';
+import AuthLogout from '@/components/adminComponents/AuthLogout.vue';
 
 const { theme, toggleTheme } = useDarkMode();
 const authStore = useAuthStore();
