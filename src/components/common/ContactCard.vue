@@ -10,8 +10,8 @@ const props = defineProps({
 </script>
 
 <template>
-    <a :href="href" target="_blank" class="flex flex-col border rounded-xl shadow-md h-[145px] w-[160px] md:h-[170px] md:w-[240px] p-5 bg-white/30">
-        <div class="grow flex">
+    <a :href="href" target="_blank" class="flex flex-col border rounded-xl shadow-md p-5 size-[48%] bg-white/30">
+        <div class="grow flex mb-[32px]">
             <div class="grow">
                 <img class="w-[52px] md:w-[74px]" :src="imageUrl" :alt="title" />
             </div>
