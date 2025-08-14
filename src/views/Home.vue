@@ -6,6 +6,8 @@ import Loader from '@/components/common/Loader.vue';
 import Works from '@/components/layout/Works.vue';
 
 import { ref} from 'vue';
+import Stack from '@/components/layout/Stack.vue';
+import Jobs from '@/components/layout/Jobs.vue';
 
 
 const isLoaded = ref(false);
@@ -19,7 +21,9 @@ const updateLoading = (value) => {
     <Loader v-if="!isLoaded" />
     <div v-show="isLoaded">
         <Home :isLoaded="isLoaded" @update:isLoaded="updateLoading" />
-        <Works />
+        <Stack />
+        <Jobs />
+        <!-- <Works /> -->
         <SayHi />
         <FooterSec />
     </div>

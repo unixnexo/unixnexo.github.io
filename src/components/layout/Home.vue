@@ -32,7 +32,7 @@ watch(() => props.isLoaded, (newValue) => {
 </script>
 
 <template>
-  <div id="main-wrapper" class="text-white overflow-hidden max-w-[550px] m-auto min-h-[80vh] xsm:min-h-[95vh] flex items-center justify-center">
+  <div id="main-wrapper" class="text-white overflow-hidden max-w-[550px] m-auto min-h-[90vh] xsm:min-h-[95vh] flex items-center justify-center">
     <Transition name="reveal" mode="out-in" v-show="props.isLoaded">
         <div id="inner-wrapper" class="w-full overflow-hidden" :style="{ backgroundImage: `url('${generalInfoStore.urlFromEnv}${generalInfoStore.generalInfo.imgUrl}')` }">
           <div id="inner-inner-wrapper" class="flex flex-col m-auto h-full p-4 relative">

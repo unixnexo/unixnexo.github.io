@@ -94,7 +94,7 @@ const scrollToId = (id) => {
 </script>
 
 <template>
-    <nav ref="nav" class="flex m-auto pt-5 space-x-3 *:space-x-3.5 will-change-auto items-center max-w-full overflow-x-auto overflow-y-clip">
+    <nav ref="nav" class="flex m-auto pt-5 pb-0.5 space-x-3 *:space-x-3.5 will-change-auto items-center max-w-full overflow-x-auto overflow-y-clip">
         <div class="flex items-baseline">
             <RouterLink v-if="isAuthenticated || route.name === 'authenticate'" :to="{ name: 'home' }" class="on-mouse">Home</RouterLink>
             <span v-else onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="on-mouse">Home</span>
@@ -111,7 +111,7 @@ const scrollToId = (id) => {
             <!-- -- -->
             <div v-else>
                 <div v-if="route.name !== 'authenticate'" class="space-x-3">
-                    <span @click="scrollToId('works');" class="on-mouse">Works</span>
+                    <span @click="scrollToId('jobs');" class="on-mouse">Works</span>
                     <span @click="scrollToId('SayHi');" class="on-mouse">Say Hi</span>
                 </div>
             </div>
